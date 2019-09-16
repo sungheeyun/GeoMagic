@@ -3,8 +3,8 @@ import os
 from matplotlib import pyplot as plt
 
 from atoms.arrow import Arrow
-from atoms.geo_object_2d import GeoObject2D
 from atoms.box import Box
+from atoms.geo_object_2d import GeoObject2D
 from atoms.line import Line
 
 if __name__ == '__main__':

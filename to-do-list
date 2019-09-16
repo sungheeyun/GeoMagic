@@ -1,0 +1,7 @@
+
+. change kargs to kwargs and pargs to args
+. attach plotting kargs to each object
+. store objects with rec. boxes
+. properly implement get_name for object_2d
+
+. make prism net generic (e.g., by implementing mirror symmetry transformation, etc.)

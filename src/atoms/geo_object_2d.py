@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
+from typing import Tuple, Union
 
-from utils import get_figure
+from matplotlib.axes import Axes
+from matplotlib.patches import Patch
 
 
 class GeoObject2D(ABC):
@@ -14,24 +16,44 @@ class GeoObject2D(ABC):
         self.plotting_kargs.update(default_plotting_kargs)
         self.plotting_kargs.update(plotting_kargs_)
 
-    def get_plotting_kargs(self):
-        return self.plotting_kargs
-
     @abstractmethod
-    def draw(self, ax):
+    def get_name(self) -> str:
         pass
 
-    @staticmethod
-    def draw_all_components(**kargs):
-        fig = get_figure(1, 1, 0, 0, 0, 0, 10, 8)
-        ax = fig.get_axes()[0]
+    @abstractmethod
+    def get_mirror_symmetry(
+        self,
+        first_point: Union[object, Tuple[Union[float, int], Union[float, int]]],
+        second_point: Union[object, Tuple[Union[float, int], Union[float, int]]],
+    ) -> object:
+        pass
+
+    @abstractmethod
+    def translate(self, delta: Union[object, Tuple[Union[float, int], Union[float, int]]]) -> object:
+        pass
+
+    @abstractmethod
+    def rotate(self, angle: Union[float, int]) -> object:
+        pass
+
+    def get_plotting_kargs(self) -> dict:
+        return self.plotting_kargs
+
+    def update_plotting_kargs(self, **kargs) -> None:
+        self.plotting_kargs.udpate(**kargs)
+
+    @abstractmethod
+    def draw(self, ax) -> Patch:
+        pass
+
+    def draw_all_components(axis: Axes) -> None:
+        # fig = get_figure(1, 1, 0, 0, 0, 0, 10, 8)
+        # ax = fig.get_axes()[0]
 
         for component in GeoObject2D.component_list:
-            component.draw(ax)
+            component.draw(axis)
 
-        ax.axis('equal')
-        ax.axis('off')
+        # axis.axis('equal')
+        # axis.axis('off')
 
-        fig.show()
-
-        return fig
+        # fig.show()
