@@ -1,4 +1,3 @@
-
 . change kargs to kwargs and pargs to args
 . attach plotting kargs to each object
 . store objects with rec. boxes
