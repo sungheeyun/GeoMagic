@@ -1,11 +1,13 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import Tuple, Union
 
 from matplotlib.axes import Axes
 from matplotlib.patches import Patch
 
+from atoms.geo_object_base import GeoObject
 
-class GeoObject2D(ABC):
+
+class GeoObject2D(GeoObject):
     component_list = list()
     DEFAULT_KARGS = dict()
 
@@ -16,9 +18,8 @@ class GeoObject2D(ABC):
         self.plotting_kargs.update(default_plotting_kargs)
         self.plotting_kargs.update(plotting_kargs_)
 
-    @abstractmethod
-    def get_name(self) -> str:
-        pass
+    def get_num_dimensions(self):
+        return 2
 
     @abstractmethod
     def get_mirror_symmetry(

@@ -14,6 +14,12 @@ class Polygon(GeoObject2D):
     Implements a polygon.
     """
 
+    def __init__(self, vertex_coor_iter: Iterable[Iterable[float]]):
+        self.vertex_coor_array: ndarray = np.array(vertex_coor_iter)
+
+    def get_name(self) -> str:
+        return f'{self.vertex_coor_array.size[0]}-gon'
+
     def rotate(self, angle: Union[float, int]) -> GeoObject2D:
         assert False
         # XXX
@@ -21,12 +27,6 @@ class Polygon(GeoObject2D):
     def translate(self, delta: Union[object, Tuple[Union[float, int], Union[float, int]]]) -> object:
         delta_vec: Vector2D = Vector2D(delta)
         return Polygon(vstack([(Vector2D(vertex) + delta_vec).coordinate for vertex in self.vertex_coor_array]))
-
-    def __init__(self, vertex_coor_iter: Iterable[Iterable[float]]):
-        self.vertex_coor_array: ndarray = np.array(vertex_coor_iter)
-
-    def get_name(self) -> str:
-        return f'{self.vertex_coor_array.size[0]}-gon'
 
     def get_mirror_symmetry(
             self,

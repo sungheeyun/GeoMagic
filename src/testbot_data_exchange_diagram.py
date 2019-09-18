@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 from atoms.arrow import Arrow
 from atoms.box import Box
 from atoms.geo_object_2d import GeoObject2D
-from atoms.line import Line
+from atoms.line2d import Line2D
 
 if __name__ == '__main__':
 
@@ -36,7 +36,7 @@ if __name__ == '__main__':
         component_box_list.append(box)
 
         line_x = component_box_list[-1].get_mid_x_coor()
-        Line((line_x, component_box_height), (line_x, line_height))
+        Line2D((line_x, component_box_height), (line_x, line_height))
 
     print(GeoObject2D.component_list)
 

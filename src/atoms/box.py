@@ -34,8 +34,8 @@ class Box(GeoObject2D):
         return self.mid_x_coor
 
     def draw(self, ax):
-        plotting_kargs = self.get_plotting_kargs()
-        ax.fill(self.x_coor_array, -self.y_coor_array, **plotting_kargs)
+        plotting_kwargs = self.get_plotting_kargs()
+        ax.fill(self.x_coor_array, -self.y_coor_array, **plotting_kwargs)
 
         if self.text:
             ax.text(self.text_x_coor, -self.text_y_coor, self.text,

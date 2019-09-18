@@ -12,8 +12,9 @@ from complex_objs.polygonal_prism_net import PolygonalPrismNet
 class TestPolygonalNets(unittest.TestCase):
     def test_polygonal_prism_nets(self):
 
-        polygon: Polygon = RegularPolygon(23)
-        polygonal_prism_net: PolygonalPrismNet = PolygonalPrismNet(polygon, 10)
+        polygon: Polygon = RegularPolygon(6)
+        # polygon = Polygon([[0, 0], [1, 1], [-2, 10], [-3, 1]])
+        polygonal_prism_net: PolygonalPrismNet = PolygonalPrismNet(polygon, 3)
 
         figure, axis = plt.subplots()
         polygonal_prism_net.draw(axis)

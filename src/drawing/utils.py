@@ -16,7 +16,7 @@ def get_figure(
     axis_height: Union[int, float] = 5.0,
     horizontal_padding: Union[int, float] = 1.0,
     vertical_padding: Union[int, float] = 1.0,
-    **kargs
+    **kwargs
 ) -> Figure:
     left_margin = float(left_margin)
     right_margin = float(right_margin)
@@ -27,7 +27,7 @@ def get_figure(
     horizontal_padding = float(horizontal_padding)
     vertical_padding = float(vertical_padding)
 
-    num = kargs.pop("num", None)
+    num = kwargs.pop("num", None)
 
     def tolist(value, n):
         assert n >= 0, ("FATAL", n)
@@ -50,7 +50,7 @@ def get_figure(
     figure_width = left_margin + right_margin + sum(axis_width_list) + sum(horizontal_padding_list)
     figure_height = bottom_margin + top_margin + sum(axis_height_list) + sum(vertical_padding_list)
 
-    figure = plt.figure(num=num, figsize=(figure_width, figure_height))
+    fig = plt.figure(num=num, figsize=(figure_width, figure_height))
 
     for i in range(num_rows):
         for j in range(num_cols):
@@ -61,9 +61,9 @@ def get_figure(
             width = axis_width_list[j] / figure_width
             height = axis_height_list[i] / figure_height
 
-            figure.add_axes([left_position, bottom_position, width, height], **kargs)
+            fig.add_axes([left_position, bottom_position, width, height], **kwargs)
 
-    return figure
+    return fig
 
 
 if __name__ == "__main__":
