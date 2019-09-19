@@ -1,5 +1,6 @@
 import unittest
-from typing import Tuple
+from typing import Tuple, List
+from numpy import sqrt
 
 from matplotlib import pyplot as plt
 from matplotlib.axes import Axes
@@ -66,6 +67,33 @@ class PolygonsTestCase(unittest.TestCase):
         figure.show()
 
         self.assertEqual(True, True)
+
+    def test_draw_two_eqiulateral_triangles(self):
+
+        smaller_triangle = RegularPolygon(3, radius=1, angle_of_one_point=-90)
+        bigger_triangle = RegularPolygon(3, radius=2, angle_of_one_point=90)
+
+        fig: Figure = get_figure(3, 2)
+        axes: List[Axes] = fig.get_axes()
+
+        for ax in axes:
+            smaller_triangle.draw(ax, color='k')
+            bigger_triangle.draw(ax, color='k')
+
+            ax.axis('off')
+            ax.axis('equal')
+
+        bigger_triangle.draw(axes[1], color='r', lw=2)
+        smaller_triangle.draw(axes[2], color='r', lw=2)
+
+        RegularPolygon(3, radius=1, angle_of_one_point=90, center=(0, 1)).draw(axes[3], color='r', lw=2)
+        RegularPolygon(3, radius=1, angle_of_one_point=90, center=(sqrt(3.0)/2.0, -0.5)).draw(axes[4], color='r', lw=2)
+        RegularPolygon(3, radius=1, angle_of_one_point=90, center=(-sqrt(3.0)/2.0, -0.5)).draw(axes[5], color='r', lw=2)
+
+        fig.show()
+        # fig.savefig('xxx.png')
+
+        self.assertTrue(True)
 
 
 if __name__ == "__main__":
