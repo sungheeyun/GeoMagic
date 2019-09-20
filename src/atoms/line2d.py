@@ -1,9 +1,12 @@
+from typing import Union, Tuple
+from copy import deepcopy
+
 import numpy as np
 
-from atoms.geo_object_2d import GeoObject2D
+from atoms.geo_object_base import GeoObject
 
 
-class Line2D(GeoObject2D):
+class Line2D(GeoObject):
     LINE_DEFAULT_PLOTTING_KARGS = dict(
         color='k',
         linewidth=.5,
@@ -15,6 +18,9 @@ class Line2D(GeoObject2D):
         self.end_coor = end_coor
 
         self.coor_array = np.vstack((self.start_coor, self.end_coor))
+
+    def get_name(self) -> str:
+        return f'Line2D(({self.start_coor[0]}, {self.start_coor[1]}), ({self.end_coor[0]}, {self.end_coor[1]}))'
 
     def draw(self, ax):
         plotting_kwargs = self.get_plotting_kargs()

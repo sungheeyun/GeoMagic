@@ -3,7 +3,7 @@ from typing import Tuple, Union
 import numpy as np
 from numpy import ndarray
 
-from atoms.polygon import Polygon
+from atoms.polygon_2d import Polygon
 from atoms.vector2d import Vector2D
 from utils import angle_iter_to_unit_circil_coor_array
 

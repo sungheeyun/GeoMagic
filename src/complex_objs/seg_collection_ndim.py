@@ -12,9 +12,12 @@ class SegCollectionNDim(GeoObjectNDim):
     Implements n-dimensional object consisting of segments.
     """
 
-    def __init__(self, ndim: int, coor_array: Iterable[Iterable[Union[float, int]]]):
+    def __init__(self, ndim: int, coor_array: Optional[Iterable[Iterable[Union[float, int]]]] = None):
         self.ndim: int = ndim
         self.segment_ndim_list: List[SegmentNDim] = list()
+
+        if coor_array is None:
+            coor_array = list()
 
         self.add_segments(coor_array)
 

@@ -6,12 +6,52 @@ from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d import Axes3D
 
 from drawing.utils import get_figure
+from atoms.polygon_2d import Polygon
 from atoms.regular_polygon import RegularPolygon
 from complex_objs.seg_collection_ndim import SegCollectionNDim
+from complex_objs.polygon_ndim import PolygonNDim
+from complex_objs.polygonal_prism_3d import PolygonalPrism3D
+from complex_objs.polygonal_pyramid_3d import PolygonalPyramid
 
 
 class TestSegmentCollection(unittest.TestCase):
-    def test_basic_functionalities(self):
+    @classmethod
+    def tearDownClass(cls) -> None:
+        plt.show()
+
+    def test_polygonal_prism_3d(self) -> None:
+        polygon: Polygon = RegularPolygon(5)
+        # polygon = Polygon([[0, 0], [1, 1], [5, 8], [-2, 10], [-3, 1]])
+        polygonal_prism_3d = PolygonalPrism3D(polygon, 2.0)
+
+        fig: Figure = get_figure(1, 1, projection='3d')
+        axis, = fig.get_axes()
+
+        polygonal_prism_3d.draw3d(axis)
+
+        axis.axis('off')
+
+        fig.show()
+
+        self.assertTrue(True)
+
+    def test_polygonal_pyramid_3d(self) -> None:
+        polygon: Polygon = RegularPolygon(6)
+        # polygon = Polygon([[0, 0], [1, 1], [-2, 10], [-3, 1]])
+        polygonal_pyramid_3d = PolygonalPyramid(polygon, [0, 1, 3])
+
+        fig: Figure = get_figure(1, 1, projection='3d')
+        axis, = fig.get_axes()
+
+        polygonal_pyramid_3d.draw3d(axis)
+
+        axis.axis('off')
+
+        fig.show()
+
+        self.assertTrue(True)
+
+    def test_basic_functionalities(self) -> None:
         # create 3-dimnesional segment collection
         regular_triangle = RegularPolygon(3)
 
@@ -38,9 +78,23 @@ class TestSegmentCollection(unittest.TestCase):
         axis1.axis('off')
 
         fig.show()
-        plt.show()
 
         self.assertEqual(True, True)
+
+    def test_polygon_ndim(self) -> None:
+        regular_polygon = RegularPolygon(5)
+        polygon_3d = PolygonNDim(regular_polygon, [0.0])
+
+        fig: Figure = get_figure(1, 1, projection='3d')
+        axis, = fig.get_axes()
+
+        polygon_3d.draw3d(axis)
+
+        axis.axis('off')
+
+        fig.show()
+
+        self.assertTrue(True)
 
 
 if __name__ == '__main__':

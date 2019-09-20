@@ -2,7 +2,7 @@ import unittest
 
 from matplotlib import pyplot as plt
 
-from atoms.polygon import Polygon
+from atoms.polygon_2d import Polygon
 from atoms.regular_polygon import RegularPolygon
 from complex_objs.polygonal_prism_net import PolygonalPrismNet
 

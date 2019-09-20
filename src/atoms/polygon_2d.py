@@ -17,6 +17,9 @@ class Polygon(GeoObject2D):
     def __init__(self, vertex_coor_iter: Iterable[Iterable[float]]):
         self.vertex_coor_array: ndarray = np.array(vertex_coor_iter)
 
+    def get_number_vertices(self) -> int:
+        return self.vertex_coor_array.shape[0]
+
     def get_name(self) -> str:
         return f'{self.vertex_coor_array.size[0]}-gon'
 
@@ -85,13 +88,8 @@ class Polygon(GeoObject2D):
     ) -> GeoObject2D:
         delta_vector: Vector2D = Vector2D(start_point_2) - start_point_1
 
-        print(f'delta_vector = {delta_vector}')
-
         starting_vector_length = delta_vector.norm()
         starting_vector_angle = arctan2(*delta_vector.coordinate[::-1]) * 180.0 / pi
-
-        print(f'starting_vector_length = {starting_vector_length}')
-        print(f'starting_vector_angle = {starting_vector_angle}')
 
         return Polygon.get_polygon_from_edges_and_angles(
             start_point_1,

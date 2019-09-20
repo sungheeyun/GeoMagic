@@ -1,6 +1,6 @@
 from typing import Union
 
-from atoms.polygon import Polygon
+from atoms.polygon_2d import Polygon
 from atoms.vector2d import Vector2D
 from complex_objs.polygonal_net_base import PolygonalNetBase
 

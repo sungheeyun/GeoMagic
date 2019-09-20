@@ -12,6 +12,25 @@ class Vector2D(GeoObject2D):
     Implements a vector in n-dimensional space.
     """
 
+    def __init__(self, coordinate_or_point: Union[Iterable[float], object]):
+        if isinstance(coordinate_or_point, Vector2D):
+            coordinate = coordinate_or_point.coordinate
+        else:
+            coordinate = coordinate_or_point
+
+        self.coordinate: ndarray = array(coordinate)
+
+        if self.coordinate.ndim != 1:
+            raise Exception(
+                f"The dimension of the array representing a Vector2D should be 1; it is {self.coordinate.ndim}!"
+            )
+
+    def get_dimension(self) -> int:
+        return len(self.coordinate)
+
+    def norm(self, *pargs, **kwargs) -> float:
+        return norm(self.coordinate, *pargs, **kwargs)
+
     def translate(self, delta: Union[object, Tuple[Union[float, int], Union[float, int]]]) -> object:
         delta_vec: Vector2D = Vector2D(delta)
         return self + delta_vec
@@ -47,25 +66,6 @@ class Vector2D(GeoObject2D):
 
     def draw(self, ax) -> Patch:
         assert False
-
-    def __init__(self, coordinate_or_point: Union[Iterable[float], object]):
-        if isinstance(coordinate_or_point, Vector2D):
-            coordinate = coordinate_or_point.coordinate
-        else:
-            coordinate = coordinate_or_point
-
-        self.coordinate: ndarray = array(coordinate)
-
-        if self.coordinate.ndim != 1:
-            raise Exception(
-                f"The dimension of the array representing a Vector2D should be 1; it is {self.coordinate.ndim}!"
-            )
-
-    def get_dimension(self) -> int:
-        return len(self.coordinate)
-
-    def norm(self, *pargs, **kwargs) -> float:
-        return norm(self.coordinate, *pargs, **kwargs)
 
     def __neg__(self) -> object:
         return Vector2D(-self.coordinate)
