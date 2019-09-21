@@ -1,11 +1,13 @@
 import os
 
 from matplotlib import pyplot as plt
+from matplotlib.figure import Figure
+from matplotlib.axes import Axes
 
 from atoms.arrow import Arrow
 from atoms.box import Box
 from atoms.geo_object_2d import GeoObject2D
-from atoms.line2d import Line2D
+from atoms.segment_2d import Segment2D
 
 if __name__ == '__main__':
 
@@ -36,7 +38,7 @@ if __name__ == '__main__':
         component_box_list.append(box)
 
         line_x = component_box_list[-1].get_mid_x_coor()
-        Line2D((line_x, component_box_height), (line_x, line_height))
+        Segment2D((line_x, component_box_height), (line_x, line_height))
 
     print(GeoObject2D.component_list)
 
@@ -95,8 +97,10 @@ if __name__ == '__main__':
 
         print(from_comp_num, to_comp_num, info_text)
 
-    fig = GeoObject2D.draw_all_components(figsize=(10, 10))
-    fig.savefig(os.path.join(os.pardir, 'figures', 'test_bot_mlp_workflow.png'))
+    fig: Figure = plt.figure(figsize=(10, 10))
+    axis: Axes = fig.add_subplot(111)
+    GeoObject2D.draw_all_components(axis)
+    fig.savefig(os.path.join(os.curdir, 'figures', 'test_bot_mlp_workflow.png'))
 
     if '__file__' in dir():
         plt.show()

@@ -6,13 +6,13 @@ from atoms.polygon_2d import Polygon
 from complex_objs.polygon_ndim import PolygonNDim
 
 
-class PolygonalPyramid(PolygonNDim):
+class PolygonalPyramid3D(PolygonNDim):
     """
     Implements a 3-D polygonal pyramid.
     """
 
     def __init__(self, polygon: Polygon, top_vertex: List[Union[float, int]], z_ground: Union[float, int] = 0.0):
-        super(PolygonalPyramid, self).__init__(polygon, [float(z_ground)])
+        super(PolygonalPyramid3D, self).__init__(polygon, [float(z_ground)])
         self.top_vertex: array = array(top_vertex, float)
 
         self._initialize()

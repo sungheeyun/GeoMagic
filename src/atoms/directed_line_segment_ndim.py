@@ -1,16 +1,16 @@
 from typing import Iterable, Union
 
-from atoms.segment_ndim import SegmentNDim
+from atoms.line_segment_ndim import LineSegmentNDim
 
 
-class DirectedSegmentNDim(SegmentNDim):
+class DirectedLineSegmentNDim(LineSegmentNDim):
 
     def __init__(
             self,
             start_point: Iterable[Union[float, int]],
             end_point: Iterable[Union[float, int]]
     ):
-        super(DirectedSegmentNDim, self).__init__(start_point, end_point)
+        super(DirectedLineSegmentNDim, self).__init__(start_point, end_point)
 
     def get_name(self) -> str:
         return f'{self.get_num_dimensions()}-D directed line segment'

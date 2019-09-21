@@ -6,7 +6,6 @@ from matplotlib import pyplot as plt
 from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 
-from atoms.line2d import Line2D
 from atoms.polygon_2d import Polygon
 from atoms.regular_polygon import RegularPolygon
 from atoms.vector2d import Vector2D
@@ -117,7 +116,7 @@ class TestPolygons(unittest.TestCase):
 
         for idx in range(number_vertices):
             tidx = (idx + 2) % number_vertices
-            # line2d = Line2D(vertex_coor_array[idx], vertex_coor_array[tidx])
+            # line2d = Segment2D(vertex_coor_array[idx], vertex_coor_array[tidx])
             line2d = Polygon(vertex_coor_array[[idx, tidx]])
             line2d.draw(ax)
 

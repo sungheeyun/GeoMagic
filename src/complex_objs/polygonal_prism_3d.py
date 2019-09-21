@@ -1,7 +1,5 @@
 from typing import Union
 
-from numpy import vstack
-
 from atoms.polygon_2d import Polygon
 from complex_objs.polygon_ndim import PolygonNDim
 
