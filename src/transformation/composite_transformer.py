@@ -1,18 +1,20 @@
+from typing import Iterable
+
 from numpy.core._multiarray_umath import ndarray
 from transformation.transformer_base import TransformerBase
 
 
 class CompositeTransformer(TransformerBase):
     """
-    Implements the composit transformer.
-    Given f and g, it implements g(f(x)).
-
+    XXX
     """
-    def __init__(self, f_transformer: TransformerBase, g_transformer: TransformerBase):
-        self.f_transformer: TransformerBase = f_transformer
-        self.g_transformer: TransformerBase = g_transformer
+
+    def __init__(self, transformer_list: Iterable[TransformerBase]):
+        self.transformer_list: Iterable[TransformerBase] = transformer_list
 
     def _transform(self, x_array: ndarray) -> ndarray:
-        y_array: ndarray = self.f_transformer._transform(x_array)
-        z_array: ndarray = self.g_transformer._transform(y_array)
-        return z_array
+        y_array: ndarray = x_array.copy()
+        for transformer in self.transformer_list:
+            y_array = transformer(y_array)
+
+        return y_array

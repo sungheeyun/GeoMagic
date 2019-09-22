@@ -8,7 +8,7 @@ from atoms.vector2d import Vector2D
 from drawing.utils import get_figure
 from utils import FIGURES_DIR
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     num_vertices: int = 5
 
@@ -22,9 +22,9 @@ if __name__ == '__main__':
     axis.set_xlim((-5, 5))
     axis.set_ylim((-5, 5))
 
-    axis.axis('off')
-    axis.axis('equal')
+    axis.axis("off")
+    axis.axis("equal")
 
     figure.show()
 
-    figure.savefig(os.path.join(FIGURES_DIR, 'regular_polygon'))
+    figure.savefig(os.path.join(FIGURES_DIR, "regular_polygon"))

@@ -4,11 +4,7 @@ from atoms.geo_object_2d import GeoObject2D
 class Arrow(GeoObject2D):
 
     ARROW_DEFAULT_PLOTTING_KARGS = dict(
-        color='k',
-        linewidth=.5,
-        head_width=6.0,
-        head_length=10.0,
-        length_includes_head=True,
+        color="k", linewidth=0.5, head_width=6.0, head_length=10.0, length_includes_head=True
     )
 
     def __init__(self, start_coor, delta_pair, text=None, **kargs):

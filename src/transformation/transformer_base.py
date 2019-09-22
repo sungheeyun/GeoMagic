@@ -1,10 +1,9 @@
-from typing import Iterable
+from typing import Iterable, Optional
 from abc import ABC, abstractmethod
 from numpy import ndarray, array
 
 
 class TransformerBase(ABC):
-
     def __call__(self, x_iter: Iterable) -> Iterable:
         x_array: ndarray = array(x_iter, float)
 
@@ -16,3 +15,9 @@ class TransformerBase(ABC):
     @abstractmethod
     def _transform(self, x_array: ndarray) -> ndarray:
         pass
+
+    def get_input_dimension(self) -> Optional[int]:
+        return None
+
+    def get_output_dimension(self) -> Optional[int]:
+        return None

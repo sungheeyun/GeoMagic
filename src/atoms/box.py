@@ -5,12 +5,7 @@ from atoms.geo_object_2d import GeoObject2D
 
 class Box(GeoObject2D):
 
-    BOX_DEFAULT_PLOTTING_KARGS = dict(
-        facecolor='w',
-        edgecolor='k',
-        linewidth=.5,
-        zorder=5
-    )
+    BOX_DEFAULT_PLOTTING_KARGS = dict(facecolor="w", edgecolor="k", linewidth=0.5, zorder=5)
 
     def __init__(self, lt_coor, wh_pair, text=None, **kargs):
         super(Box, self).__init__(Box.BOX_DEFAULT_PLOTTING_KARGS, kargs)
@@ -38,5 +33,4 @@ class Box(GeoObject2D):
         ax.fill(self.x_coor_array, -self.y_coor_array, **plotting_kwargs)
 
         if self.text:
-            ax.text(self.text_x_coor, -self.text_y_coor, self.text,
-                    ha='center', va='center', zorder=6)
+            ax.text(self.text_x_coor, -self.text_y_coor, self.text, ha="center", va="center", zorder=6)

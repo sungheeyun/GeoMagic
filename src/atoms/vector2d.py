@@ -42,13 +42,13 @@ class Vector2D(GeoObject2D):
         return Vector2D((cos(angle_rad) * x - sin(angle_rad) * y, sin(angle_rad) * x + cos(angle_rad) * y))
 
     def get_name(self) -> str:
-        aa = ', '.join([f'{x:.2f}' for x in self.coordinate])
-        return f'Vector2D({aa})'
+        aa = ", ".join([f"{x:.2f}" for x in self.coordinate])
+        return f"Vector2D({aa})"
 
     def get_mirror_symmetry(
-            self,
-            first_point: Union[object, Tuple[Union[float, int], Union[float, int]]],
-            second_point: Union[object, Tuple[Union[float, int], Union[float, int]]]
+        self,
+        first_point: Union[object, Tuple[Union[float, int], Union[float, int]]],
+        second_point: Union[object, Tuple[Union[float, int], Union[float, int]]],
     ) -> object:
         first_point: Vector2D = Vector2D(first_point)
         second_point: Vector2D = Vector2D(second_point)
@@ -57,9 +57,9 @@ class Vector2D(GeoObject2D):
         delta_angle_rad = arctan2(*delta_vector.coordinate[::-1])
 
         shifted_point: Vector2D = self - first_point
-        rotated_point: Vector2D = shifted_point.rotate(- delta_angle_rad * 180. / pi)
+        rotated_point: Vector2D = shifted_point.rotate(-delta_angle_rad * 180.0 / pi)
         upside_down_point: Vector2D = Vector2D((rotated_point.coordinate[0], -rotated_point.coordinate[1]))
-        rotated_back_point: Vector2D = upside_down_point.rotate(delta_angle_rad * 180. / pi)
+        rotated_back_point: Vector2D = upside_down_point.rotate(delta_angle_rad * 180.0 / pi)
         shifted_back_point: Vector2D = rotated_back_point + first_point
 
         return shifted_back_point

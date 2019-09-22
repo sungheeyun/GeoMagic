@@ -21,7 +21,7 @@ class Polygon(GeoObject2D):
         return self.vertex_coor_array.shape[0]
 
     def get_name(self) -> str:
-        return f'{self.vertex_coor_array.size[0]}-gon'
+        return f"{self.vertex_coor_array.size[0]}-gon"
 
     def rotate(self, angle: Union[float, int]) -> GeoObject2D:
         assert False
@@ -32,9 +32,9 @@ class Polygon(GeoObject2D):
         return Polygon(vstack([(Vector2D(vertex) + delta_vec).coordinate for vertex in self.vertex_coor_array]))
 
     def get_mirror_symmetry(
-            self,
-            first_point: Union[Vector2D, Tuple[Union[float, int], Union[float, int]]],
-            second_point: Union[Vector2D, Tuple[Union[float, int], Union[float, int]]]
+        self,
+        first_point: Union[Vector2D, Tuple[Union[float, int], Union[float, int]]],
+        second_point: Union[Vector2D, Tuple[Union[float, int], Union[float, int]]],
     ) -> GeoObject2D:
 
         coordinate_list = list()
@@ -55,10 +55,10 @@ class Polygon(GeoObject2D):
 
     @classmethod
     def get_polygon_from_edges_and_angles(
-            cls,
-            start_point: Union[Vector2D, Tuple[Union[float, int], Union[float, int]]],
-            edge_length_iter: Iterable[float],
-            angle_iter: Iterable[float]
+        cls,
+        start_point: Union[Vector2D, Tuple[Union[float, int], Union[float, int]]],
+        edge_length_iter: Iterable[float],
+        angle_iter: Iterable[float],
     ) -> GeoObject2D:
         start_point: Vector2D = Vector2D(start_point)
 
@@ -80,11 +80,11 @@ class Polygon(GeoObject2D):
 
     @classmethod
     def get_polygon_from_edges_and_angles_with_two_start_points(
-            cls,
-            start_point_1: Union[Vector2D, Tuple[Union[float, int], Union[float, int]]],
-            start_point_2: Union[Vector2D, Tuple[Union[float, int], Union[float, int]]],
-            edge_length_iter: Iterable[Union[float, int]],
-            angle_iter: Iterable[Union[float, int]]
+        cls,
+        start_point_1: Union[Vector2D, Tuple[Union[float, int], Union[float, int]]],
+        start_point_2: Union[Vector2D, Tuple[Union[float, int], Union[float, int]]],
+        edge_length_iter: Iterable[Union[float, int]],
+        angle_iter: Iterable[Union[float, int]],
     ) -> GeoObject2D:
         delta_vector: Vector2D = Vector2D(start_point_2) - start_point_1
 
@@ -92,7 +92,5 @@ class Polygon(GeoObject2D):
         starting_vector_angle = arctan2(*delta_vector.coordinate[::-1]) * 180.0 / pi
 
         return Polygon.get_polygon_from_edges_and_angles(
-            start_point_1,
-            [starting_vector_length] + list(edge_length_iter),
-            [starting_vector_angle] + list(angle_iter)
+            start_point_1, [starting_vector_length] + list(edge_length_iter), [starting_vector_angle] + list(angle_iter)
         )

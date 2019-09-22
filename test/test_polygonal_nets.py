@@ -10,6 +10,10 @@ from complex_objs.polygonal_prism_net import PolygonalPrismNet
 
 
 class TestPolygonalNets(unittest.TestCase):
+    @classmethod
+    def tearDownClass(cls) -> None:
+        plt.show()
+
     def test_polygonal_prism_nets(self):
 
         polygon: Polygon = RegularPolygon(6)
@@ -19,6 +23,7 @@ class TestPolygonalNets(unittest.TestCase):
         figure, axis = plt.subplots()
         polygonal_prism_net.draw(axis)
 
+        axis.axis("off")
         axis.axis("equal")
         figure.show()
 

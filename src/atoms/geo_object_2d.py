@@ -22,7 +22,7 @@ class GeoObject2D(GeoObject):
     def get_num_dimensions(self):
         return 2
 
-    # @abstractmethod
+    @abstractmethod
     def get_mirror_symmetry(
         self,
         first_point: Union[object, Tuple[Union[float, int], Union[float, int]]],
@@ -31,12 +31,12 @@ class GeoObject2D(GeoObject):
         pass
         return deepcopy(self)
 
-    # @abstractmethod
+    @abstractmethod
     def translate(self, delta: Union[object, Tuple[Union[float, int], Union[float, int]]]) -> object:
         pass
         return deepcopy(self)
 
-    # @abstractmethod
+    @abstractmethod
     def rotate(self, angle: Union[float, int]) -> object:
         pass
         return deepcopy(self)

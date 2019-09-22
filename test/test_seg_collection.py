@@ -9,7 +9,7 @@ from drawing.utils import get_figure
 from atoms.polygon_2d import Polygon
 from atoms.regular_polygon import RegularPolygon
 from complex_objs.seg_collection_ndim import SegCollectionNDim
-from complex_objs.polygon_ndim import PolygonNDim
+from complex_objs.polygon_2d_ndim import Polygon2DInNDim
 from complex_objs.polygonal_prism_3d import PolygonalPrism3D
 from complex_objs.polygonal_pyramid_3d import PolygonalPyramid3D
 
@@ -24,12 +24,12 @@ class TestSegmentCollection(unittest.TestCase):
         # polygon = Polygon([[0, 0], [1, 1], [5, 8], [-2, 10], [-3, 1]])
         polygonal_prism_3d = PolygonalPrism3D(polygon, 2.0)
 
-        fig: Figure = get_figure(1, 1, projection='3d')
+        fig: Figure = get_figure(1, 1, projection="3d")
         axis, = fig.get_axes()
 
         polygonal_prism_3d.draw3d(axis)
 
-        axis.axis('off')
+        axis.axis("off")
 
         fig.show()
 
@@ -40,12 +40,12 @@ class TestSegmentCollection(unittest.TestCase):
         # polygon = Polygon([[0, 0], [1, 1], [-2, 10], [-3, 1]])
         polygonal_pyramid_3d = PolygonalPyramid3D(polygon, [0, 1, 3])
 
-        fig: Figure = get_figure(1, 1, projection='3d')
+        fig: Figure = get_figure(1, 1, projection="3d")
         axis, = fig.get_axes()
 
         polygonal_pyramid_3d.draw3d(axis)
 
-        axis.axis('off')
+        axis.axis("off")
 
         fig.show()
 
@@ -61,7 +61,7 @@ class TestSegmentCollection(unittest.TestCase):
         north_point = [0, 0, sqrt(2.0)]
 
         seg_collection_ndim = SegCollectionNDim(3, coor_3d_array)
-        for idx in range(len(coor_3d_array)-1):
+        for idx in range(len(coor_3d_array) - 1):
             vertex = coor_3d_array[idx]
             print(vertex.shape)
             seg_collection_ndim.add_segments(vstack((vertex, north_point)))
@@ -69,13 +69,13 @@ class TestSegmentCollection(unittest.TestCase):
         for segment in seg_collection_ndim.segment_ndim_list:
             print(segment)
 
-        fig: Figure = get_figure(1, 2, projection='3d')
+        fig: Figure = get_figure(1, 2, projection="3d")
         axis1, axis2 = fig.get_axes()
 
         seg_collection_ndim.draw3d(axis1)
         seg_collection_ndim.draw3d(axis2)
 
-        axis1.axis('off')
+        axis1.axis("off")
 
         fig.show()
 
@@ -83,19 +83,19 @@ class TestSegmentCollection(unittest.TestCase):
 
     def test_polygon_ndim(self) -> None:
         regular_polygon = RegularPolygon(5)
-        polygon_3d = PolygonNDim(regular_polygon, [0.0])
+        polygon_3d = Polygon2DInNDim(regular_polygon, [0.0])
 
-        fig: Figure = get_figure(1, 1, projection='3d')
+        fig: Figure = get_figure(1, 1, projection="3d")
         axis, = fig.get_axes()
 
         polygon_3d.draw3d(axis)
 
-        axis.axis('off')
+        axis.axis("off")
 
         fig.show()
 
         self.assertTrue(True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

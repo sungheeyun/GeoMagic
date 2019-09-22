@@ -26,7 +26,7 @@ class TestPolygons(unittest.TestCase):
 
     @staticmethod
     def _finish_fig(figure: Figure, axis: Axes) -> None:
-        axis.axis('off')
+        axis.axis("off")
         axis.axis("equal")
         figure.show()
 
@@ -84,22 +84,26 @@ class TestPolygons(unittest.TestCase):
         fig, axes = TestPolygons._get_fig_and_axes(3, 2)
 
         for ax in axes:
-            smaller_triangle.draw(ax, color='k', lw=1)
-            bigger_triangle.draw(ax, color='k', lw=1)
+            smaller_triangle.draw(ax, color="k", lw=1)
+            bigger_triangle.draw(ax, color="k", lw=1)
 
-            ax.axis('off')
-            ax.axis('equal')
+            ax.axis("off")
+            ax.axis("equal")
 
-        bigger_triangle.draw(axes[1], color='r', lw=2)
-        smaller_triangle.draw(axes[2], color='r', lw=2)
+        bigger_triangle.draw(axes[1], color="r", lw=2)
+        smaller_triangle.draw(axes[2], color="r", lw=2)
 
-        RegularPolygon(3, radius=1, angle_of_one_point=90, center=(0, 1)).draw(axes[3], color='r', lw=2)
-        RegularPolygon(3, radius=1, angle_of_one_point=90, center=(sqrt(3.0)/2.0, -0.5)).draw(axes[4], color='r', lw=2)
-        RegularPolygon(3, radius=1, angle_of_one_point=90, center=(-sqrt(3.0)/2.0, -0.5)).draw(axes[5], color='r', lw=2)
+        RegularPolygon(3, radius=1, angle_of_one_point=90, center=(0, 1)).draw(axes[3], color="r", lw=2)
+        RegularPolygon(3, radius=1, angle_of_one_point=90, center=(sqrt(3.0) / 2.0, -0.5)).draw(
+            axes[4], color="r", lw=2
+        )
+        RegularPolygon(3, radius=1, angle_of_one_point=90, center=(-sqrt(3.0) / 2.0, -0.5)).draw(
+            axes[5], color="r", lw=2
+        )
 
         fig.show()
 
-        fig.savefig('yyy.png')
+        fig.savefig("yyy.png")
 
         self.assertTrue(True)
 

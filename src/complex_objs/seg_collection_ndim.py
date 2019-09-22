@@ -4,7 +4,6 @@ from matplotlib.axes import Axes
 
 from atoms.geo_object_ndim import GeoObjectNDim
 from atoms.line_segment_ndim import LineSegmentNDim
-from atoms.directed_line_segment_ndim import DirectedLineSegmentNDim
 from transformation.transformer_base import TransformerBase
 
 
@@ -13,8 +12,8 @@ class SegCollectionNDim(GeoObjectNDim):
     Implements n-dimensional object consisting of segments.
     """
 
-    def __init__(self, ndim: int, coor_array: Optional[Iterable[Iterable[Union[float, int]]]] = None):
-        self.ndim: int = ndim
+    def __init__(self, num_dimensions: int, coor_array: Optional[Iterable[Iterable[Union[float, int]]]] = None):
+        self.num_dimensions: int = num_dimensions
         self.segment_ndim_list: List[LineSegmentNDim] = list()
 
         if coor_array is None:
@@ -30,13 +29,13 @@ class SegCollectionNDim(GeoObjectNDim):
                 )
 
         for idx in range(len(coor_array) - 1):
-            self.segment_ndim_list.append(DirectedLineSegmentNDim(coor_array[idx], coor_array[idx + 1]))
+            self.segment_ndim_list.append(LineSegmentNDim(coor_array[idx], coor_array[idx + 1]))
 
     def get_name(self) -> str:
         return f"{self.get_num_dimensions()}-D segment collection"
 
     def get_num_dimensions(self) -> Optional[int]:
-        return self.ndim
+        return self.num_dimensions
 
     def draw3d(self, axis: Axes, **kwargs):
         if self.get_num_dimensions() != 3:
