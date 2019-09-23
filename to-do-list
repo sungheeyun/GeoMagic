@@ -1,6 +1,11 @@
+. take care of the parts marked by XXX
+. check coordinate direction for 3d rotation. something seems odd
 . test rotation on 2d object, too.
 . change kargs to kwargs and pargs to args
 . attach plotting kargs to each object
 . store objects with rec. boxes
 . properly implement get_name for object_2d
 . make prism net generic (e.g., by implementing mirror symmetry transformation, etc.)
+. get A and b for symmetric_around_line transformation and subclass it from affine transformation
+. figure out draw2d and draw3d return types and make changes to code
+. change assert to exceptions

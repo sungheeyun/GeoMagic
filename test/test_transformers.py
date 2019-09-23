@@ -5,7 +5,7 @@ from numpy.random import rand
 
 from transformation.scaling import Scaling
 from transformation.shifting import Shifting
-from transformation.composite_transformer import CompositeTransformer
+from transformation.composite_transformer import CompositeTransformation
 
 
 class TestTransformers(unittest.TestCase):
@@ -32,8 +32,8 @@ class TestTransformers(unittest.TestCase):
 
         x_array_ndim: ndarray = rand(5, 3, 2)
 
-        composite_transformer_1 = CompositeTransformer((scaler, shifter))
-        composite_transformer_2 = CompositeTransformer((shifter, scaler))
+        composite_transformer_1 = CompositeTransformation((scaler, shifter))
+        composite_transformer_2 = CompositeTransformation((shifter, scaler))
 
         self.assertTrue(
             allclose(

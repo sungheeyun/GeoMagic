@@ -20,7 +20,7 @@ class TestSegmentCollection(unittest.TestCase):
         plt.show()
 
     def test_polygonal_prism_3d(self) -> None:
-        polygon: Polygon = RegularPolygon(5)
+        polygon: Polygon = RegularPolygon(123)
         # polygon = Polygon([[0, 0], [1, 1], [5, 8], [-2, 10], [-3, 1]])
         polygonal_prism_3d = PolygonalPrism3D(polygon, 2.0)
 

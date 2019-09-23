@@ -16,9 +16,9 @@ class TestPolygonalNets(unittest.TestCase):
 
     def test_polygonal_prism_nets(self):
 
-        polygon: Polygon = RegularPolygon(6)
+        polygon: Polygon = RegularPolygon(4)
         # polygon = Polygon([[0, 0], [1, 1], [-2, 10], [-3, 1]])
-        polygonal_prism_net: PolygonalPrismNet = PolygonalPrismNet(polygon, 3)
+        polygonal_prism_net: PolygonalPrismNet = PolygonalPrismNet(polygon, 2)
 
         figure, axis = plt.subplots()
         polygonal_prism_net.draw(axis)
@@ -27,6 +27,7 @@ class TestPolygonalNets(unittest.TestCase):
         axis.axis("equal")
         figure.show()
 
+        # figure.savefig(os.path.join(FIGURES_DIR, 'pentagonal_prisum_net.png'))
         # figure.savefig(os.path.join(FIGURES_DIR, 'heptagonal_prisum_net.png'))
 
         self.assertEqual(True, True)
