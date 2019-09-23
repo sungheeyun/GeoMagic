@@ -3,7 +3,7 @@ from typing import List, Union
 from numpy import ndarray, array
 
 from atoms.geo_object_ndim import GeoObjectNDim
-from transformation.transformer_base import TransformerBase
+from transformation.transformation_base import TransformationBase
 
 
 class VectorNDim(GeoObjectNDim):
@@ -27,5 +27,5 @@ class VectorNDim(GeoObjectNDim):
     def get_num_dimensions(self) -> int:
         return self.array_1d.size
 
-    def apply_transformation(self, transformer: TransformerBase) -> GeoObjectNDim:
+    def apply_transformation(self, transformer: TransformationBase) -> GeoObjectNDim:
         return VectorNDim(transformer(self.array_1d))

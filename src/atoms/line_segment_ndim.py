@@ -5,7 +5,8 @@ from numpy import array, vstack, ndarray
 from matplotlib.axes import Axes
 
 from atoms.geo_object_ndim import GeoObjectNDim
-from transformation.transformer_base import TransformerBase
+from atoms.box_ndim import BoxNDim
+from transformation.transformation_base import TransformationBase
 
 
 class LineSegmentNDim(GeoObjectNDim):
@@ -28,15 +29,18 @@ class LineSegmentNDim(GeoObjectNDim):
     def __repr__(self) -> str:
         return f"Seg({self.point_1}, {self.point_2})"
 
+    def draw2d(self, axis: Axes, **kwargs):
+        return axis.plot(self.point_array_2d[:, 0], self.point_array_2d[:, 1], **kwargs)
+
     def draw3d(self, axis: Axes, **kwargs):
-        if self.get_num_dimensions() != 3:
-            raise Exception(f"The dimension should be 3; it's {self.get_num_dimensions()}")
+        return axis.plot(self.point_array_2d[:, 0], self.point_array_2d[:, 1], self.point_array_2d[:, 2], **kwargs)
 
-        axis.plot(self.point_array_2d[:, 0], self.point_array_2d[:, 1], self.point_array_2d[:, 2], **kwargs)
-
-    def apply_transformation(self, transformer: TransformerBase) -> GeoObject:
+    def apply_transformation(self, transformer: TransformationBase) -> GeoObject:
         point1: ndarray = None
         point2: ndarray = None
         point1, point2 = transformer(self.point_array_2d)
 
         return LineSegmentNDim(point1, point2)
+
+    def get_smallest_containing_box(self) -> BoxNDim:
+        return BoxNDim(self.point_array_2d.min(axis=0), self.point_array_2d.max(axis=0))

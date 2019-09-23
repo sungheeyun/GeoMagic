@@ -12,12 +12,12 @@ class GeoObject2D(GeoObject):
     component_list: List[GeoObject] = list()
     DEFAULT_KARGS = dict()
 
-    def __init__(self, default_plotting_kargs, plotting_kargs_):
+    def __init__(self, default_plotting_kwargs, plotting_kwargs_):
         GeoObject2D.component_list.append(self)
 
-        self.plotting_kargs = GeoObject2D.DEFAULT_KARGS.copy()
-        self.plotting_kargs.update(default_plotting_kargs)
-        self.plotting_kargs.update(plotting_kargs_)
+        self.plotting_kwargs = GeoObject2D.DEFAULT_KARGS.copy()
+        self.plotting_kwargs.update(default_plotting_kwargs)
+        self.plotting_kwargs.update(plotting_kwargs_)
 
     def get_num_dimensions(self):
         return 2
@@ -41,11 +41,11 @@ class GeoObject2D(GeoObject):
         pass
         return deepcopy(self)
 
-    def get_plotting_kargs(self) -> dict:
-        return self.plotting_kargs
+    def get_plotting_kwargs(self) -> dict:
+        return self.plotting_kwargs
 
-    def update_plotting_kargs(self, **kargs) -> None:
-        self.plotting_kargs.udpate(**kargs)
+    def update_plotting_kwargs(self, **kwargs) -> None:
+        self.plotting_kwargs.udpate(**kwargs)
 
     @abstractmethod
     def draw(self, ax) -> Patch:

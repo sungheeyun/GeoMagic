@@ -1,10 +1,12 @@
 from typing import Iterable, Union, List, Optional
+from copy import deepcopy
 
 from matplotlib.axes import Axes
 
 from atoms.geo_object_ndim import GeoObjectNDim
 from atoms.line_segment_ndim import LineSegmentNDim
-from transformation.transformer_base import TransformerBase
+from atoms.box_ndim import BoxNDim
+from transformation.transformation_base import TransformationBase
 
 
 class SegCollectionNDim(GeoObjectNDim):
@@ -37,17 +39,37 @@ class SegCollectionNDim(GeoObjectNDim):
     def get_num_dimensions(self) -> Optional[int]:
         return self.num_dimensions
 
-    def draw3d(self, axis: Axes, **kwargs):
-        if self.get_num_dimensions() != 3:
-            raise Exception(f"The dimension should be 3; it's {self.get_num_dimensions()}")
+    def get_smallest_containing_box(self) -> BoxNDim:
+        return sum([segment_ndim.get_smallest_containing_box() for segment_ndim in self.segment_ndim_list])
 
+    def draw2d(self, axis: Axes, **kwargs):
+        for segment in self.segment_ndim_list:
+            segment.draw2d(axis, **kwargs)
+
+    def draw3d(self, axis: Axes, **kwargs):
         for segment in self.segment_ndim_list:
             segment.draw3d(axis, **kwargs)
 
-    def apply_transformation(self, transformer: TransformerBase) -> GeoObjectNDim:
+    def apply_transformation(self, transformer: TransformationBase) -> GeoObjectNDim:
         seg_collection_ndim: SegCollectionNDim = SegCollectionNDim(self.get_num_dimensions())
 
         for segment_ndim in self.segment_ndim_list:
             seg_collection_ndim.segment_ndim_list.append(segment_ndim.apply_transformation(transformer))
 
         return seg_collection_ndim
+
+    def __add__(self, other: GeoObjectNDim) -> GeoObjectNDim:
+        """
+        Combine two SegCollectionNDim's into one SegCollectionNDim.
+        """
+        if not (self.get_num_dimensions() == other.get_num_dimensions()):
+            except_msg_1: str = "The dimensions of the two objects should be the same to be summed;"
+            except_msg_2: str = f"they are {self.get_num_dimensions()} and {other.get_num_dimensions()}."
+            raise Exception(f"{except_msg_1} {except_msg_2}")
+
+        seg_collection_ndim_summed: SegCollectionNDim = deepcopy(self)
+
+        for segment_ndim in other.segment_ndim_list:
+            seg_collection_ndim_summed.segment_ndim_list.append(deepcopy(segment_ndim))
+
+        return seg_collection_ndim_summed

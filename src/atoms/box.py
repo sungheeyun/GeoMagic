@@ -7,8 +7,8 @@ class Box(GeoObject2D):
 
     BOX_DEFAULT_PLOTTING_KARGS = dict(facecolor="w", edgecolor="k", linewidth=0.5, zorder=5)
 
-    def __init__(self, lt_coor, wh_pair, text=None, **kargs):
-        super(Box, self).__init__(Box.BOX_DEFAULT_PLOTTING_KARGS, kargs)
+    def __init__(self, lt_coor, wh_pair, text=None, **kwargs):
+        super(Box, self).__init__(Box.BOX_DEFAULT_PLOTTING_KARGS, kwargs)
         self.lt_coor = lt_coor
         self.wh_pair = wh_pair
         self.text = text
@@ -29,7 +29,7 @@ class Box(GeoObject2D):
         return self.mid_x_coor
 
     def draw(self, ax):
-        plotting_kwargs = self.get_plotting_kargs()
+        plotting_kwargs = self.get_plotting_kwargs()
         ax.fill(self.x_coor_array, -self.y_coor_array, **plotting_kwargs)
 
         if self.text:

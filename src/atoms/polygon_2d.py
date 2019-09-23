@@ -44,11 +44,11 @@ class Polygon(GeoObject2D):
 
         return Polygon(vstack(coordinate_list))
 
-    def draw(self, ax: Axes, **kargs) -> mp.Polygon:
-        dkargs = dict(fill=False)
-        dkargs.update(kargs)
+    def draw(self, ax: Axes, **kwargs) -> mp.Polygon:
+        dkwargs = dict(fill=False)
+        dkwargs.update(kwargs)
 
-        polygon_patch = mp.Polygon(self.vertex_coor_array, **dkargs)
+        polygon_patch = mp.Polygon(self.vertex_coor_array, **dkwargs)
         ax.add_patch(polygon_patch)
 
         return polygon_patch

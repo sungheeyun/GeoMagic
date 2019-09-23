@@ -34,9 +34,6 @@ class PolygonalPrismNet(PolygonalNetBase):
             first_point: Vector2D = Vector2D(first_point_list[idx])
             second_point: Vector2D = Vector2D(second_point_list[idx])
 
-            print(first_point)
-            print(second_point)
-
             rectangle: Polygon = Polygon.get_polygon_from_edges_and_angles_with_two_start_points(
                 first_point, second_point, [self.height, (first_point - second_point).norm()], [90, 90]
             )

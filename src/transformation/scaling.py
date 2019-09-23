@@ -2,10 +2,10 @@ from typing import Union
 
 from numpy import ndarray
 
-from transformation.transformer_base import TransformerBase
+from transformation.transformation_base import TransformationBase
 
 
-class Scaling(TransformerBase):
+class Scaling(TransformationBase):
     def __init__(self, factor: Union[float, int]):
         self.factor = float(factor)
 

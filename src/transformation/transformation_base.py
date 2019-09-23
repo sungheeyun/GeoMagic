@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from numpy import ndarray, array
 
 
-class TransformerBase(ABC):
+class TransformationBase(ABC):
     def __call__(self, x_iter: Iterable) -> Iterable:
         x_array: ndarray = array(x_iter, float)
 
@@ -16,8 +16,10 @@ class TransformerBase(ABC):
     def _transform(self, x_array: ndarray) -> ndarray:
         pass
 
+    @abstractmethod
     def get_input_dimension(self) -> Optional[int]:
-        return None
+        pass
 
+    @abstractmethod
     def get_output_dimension(self) -> Optional[int]:
-        return None
+        pass
