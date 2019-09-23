@@ -13,6 +13,10 @@ from drawing.utils import get_figure
 
 
 class TestPolygons(unittest.TestCase):
+    @classmethod
+    def tearDownClass(cls) -> None:
+        plt.show()
+
     @staticmethod
     def _get_fig_axis() -> Tuple[Figure, Axes]:
         return plt.subplots()

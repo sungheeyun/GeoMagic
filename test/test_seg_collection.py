@@ -13,8 +13,11 @@ from complex_objs.polygon_2d_ndim import Polygon2DInNDim
 from complex_objs.polygonal_prism_3d import PolygonalPrism3D
 from complex_objs.polygonal_pyramid_3d import PolygonalPyramid3D
 
+Axes3D
+
 
 class TestSegmentCollection(unittest.TestCase):
+
     @classmethod
     def tearDownClass(cls) -> None:
         plt.show()

@@ -17,6 +17,9 @@ from transformation.shifting import Shifting
 from transformation.rotation_around_subspace_axis import RotationAroundSubspaceAxis
 
 
+Axes3D
+
+
 class Test3DObjectTransformation(unittest.TestCase):
 
     SCALE_FACTOR = 1.1
@@ -52,6 +55,27 @@ class Test3DObjectTransformation(unittest.TestCase):
 
         self.assertTrue(True)
 
+    def test_beths_curriculum(self) -> None:
+        polygon: Polygon = RegularPolygon(4)
+        # polygon = Polygon([[0, 0], [1, 1], [-2, 10], [-3, 1]])
+        polygonal_pyramid_3d = PolygonalPyramid3D(polygon, [0, 1, sqrt(2)])
+
+        fig: Figure = plt.figure(figsize=(6, 10))
+        axis1: Axes = fig.add_subplot(211, projection="3d")
+        axis2: Axes = fig.add_subplot(212)
+
+        # polygonal_pyramid_3d.draw3d(axis1)
+        polygonal_pyramid_3d.draw3d(axis1)
+        polygonal_pyramid_3d.to_2d_net().draw2d(axis2, color="k")
+
+        # axis1.axis("off")
+        axis2.axis("off")
+        axis2.axis("equal")
+
+        fig.show()
+
+        self.assertTrue(True)
+
     def test_polygonal_pyramid_3d(self) -> None:
         polygon: Polygon = RegularPolygon(6)
         # polygon = Polygon([[0, 0], [1, 1], [-2, 10], [-3, 1]])
@@ -70,8 +94,6 @@ class Test3DObjectTransformation(unittest.TestCase):
         axis2.axis("equal")
 
         fig.show()
-
-        fig.savefig("xxx.png")
 
         self.assertTrue(True)
 
