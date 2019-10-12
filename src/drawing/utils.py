@@ -64,13 +64,3 @@ def get_figure(
             fig.add_axes([left_position, bottom_position, width, height], **kwargs)
 
     return fig
-
-
-if __name__ == "__main__":
-    figure = get_figure(1, 1)
-    figure.set_tight_layout(False)
-
-    figure.get_axes()[0].plot([1, 2, 3], [0, 1, 0])
-
-    figure.show()
-    plt.show()

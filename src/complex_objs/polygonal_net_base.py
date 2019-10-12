@@ -5,5 +5,4 @@ class PolygonalNetBase(GeoObjectCollection2D):
     """
     Implements a polygonal net, e.g., a net for pentagonal prism.
     """
-
     pass

@@ -2,8 +2,9 @@ from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 from atoms.regular_polygon import RegularPolygon
-from complex_objs.polygonal_pyramid_3d import PolygonalPyramid3D
 from complex_objs.polygonal_prism_3d import PolygonalPrism3D
+
+Axes3D
 
 
 if __name__ == "__main__":
@@ -17,14 +18,9 @@ if __name__ == "__main__":
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
 
-    #ax.axis('off')
+    # ax.axis('off')
 
     obj3d.draw3d(ax)
 
     fig.show()
     plt.show()
-
-
-
-
-

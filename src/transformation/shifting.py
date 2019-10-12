@@ -2,6 +2,7 @@ from typing import Union, Iterable, Optional
 
 from numpy import ndarray, array
 from transformation.transformation_base import TransformationBase
+from transformation.inverible_transformation import InvertibleTransformation
 
 
 class Shifting(TransformationBase):

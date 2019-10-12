@@ -28,8 +28,8 @@ class Vector2D(GeoObject2D):
     def get_dimension(self) -> int:
         return len(self.coordinate)
 
-    def norm(self, *pargs, **kwargs) -> float:
-        return norm(self.coordinate, *pargs, **kwargs)
+    def norm(self, *args, **kwargs) -> float:
+        return norm(self.coordinate, *args, **kwargs)
 
     def translate(self, delta: Union[object, Tuple[Union[float, int], Union[float, int]]]) -> object:
         delta_vec: Vector2D = Vector2D(delta)

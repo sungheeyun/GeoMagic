@@ -16,10 +16,8 @@ class TransformationBase(ABC):
     def _transform(self, x_array: ndarray) -> ndarray:
         pass
 
-    @abstractmethod
     def get_input_dimension(self) -> Optional[int]:
-        pass
+        return None
 
-    @abstractmethod
     def get_output_dimension(self) -> Optional[int]:
-        pass
+        return None

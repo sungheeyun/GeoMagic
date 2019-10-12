@@ -52,12 +52,12 @@ class GeoObject2D(GeoObject):
         pass
 
     def draw_all_components(axis: Axes) -> List[Patch]:
-        # fig = get_figure(1, 1, 0, 0, 0, 0, 10, 8)
-        # axis = fig.get_axes()[0]
+        # figure = get_figure(1, 1, 0, 0, 0, 0, 10, 8)
+        # axis = figure.get_axes()[0]
 
         return [component.draw(axis) for component in GeoObject2D.component_list]
 
         # axis.axis('equal')
         # axis.axis('off')
 
-        # fig.show()
+        # figure.show()

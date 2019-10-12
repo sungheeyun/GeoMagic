@@ -4,7 +4,6 @@ from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 
 from atoms.regular_polygon import RegularPolygon
-from atoms.vector2d import Vector2D
 from drawing.utils import get_figure
 from utils import FIGURES_DIR
 
@@ -36,7 +35,7 @@ if __name__ == "__main__":
     axis.set_xlim((-5, 5))
     axis.set_ylim((-5, 5))
 
-    #axis.axis("off")
+    # axis.axis("off")
     axis.axis("equal")
     axis.grid(True)
 
