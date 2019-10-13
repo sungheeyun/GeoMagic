@@ -6,7 +6,7 @@ from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d import Axes3D
 
 from drawing.utils import get_figure
-from atoms.polygon_2d import Polygon
+from atoms.polygon import Polygon
 from atoms.regular_polygon import RegularPolygon
 from complex_objs.seg_collection_ndim import SegCollectionNDim
 from complex_objs.polygon_2d_ndim import Polygon2DInNDim
@@ -24,7 +24,7 @@ class TestSegmentCollection(unittest.TestCase):
 
     def test_polygonal_prism_3d(self) -> None:
         polygon: Polygon = RegularPolygon(123)
-        # polygon = Polygon([[0, 0], [1, 1], [5, 8], [-2, 10], [-3, 1]])
+        # base_polygon = Polygon([[0, 0], [1, 1], [5, 8], [-2, 10], [-3, 1]])
         polygonal_prism_3d = PolygonalPrism3D(polygon, 2.0)
 
         fig: Figure = get_figure(1, 1, projection="3d")
@@ -40,7 +40,7 @@ class TestSegmentCollection(unittest.TestCase):
 
     def test_polygonal_pyramid_3d(self) -> None:
         polygon: Polygon = RegularPolygon(6)
-        # polygon = Polygon([[0, 0], [1, 1], [-2, 10], [-3, 1]])
+        # base_polygon = Polygon([[0, 0], [1, 1], [-2, 10], [-3, 1]])
         polygonal_pyramid_3d = PolygonalPyramid3D(polygon, [0, 1, 3])
 
         fig: Figure = get_figure(1, 1, projection="3d")

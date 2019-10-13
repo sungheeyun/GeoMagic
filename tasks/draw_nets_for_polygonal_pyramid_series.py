@@ -16,7 +16,7 @@ if __name__ == "__main__":
     num_vertices: int = 6
     polygon_radius: float = 2.0
     num_right_pyramids: int = 2
-    num_pyramids: int = num_ridfasdfht_pyramids * 2 + 1
+    num_pyramids: int = num_right_pyramids * 2 + 1
     pyramid_hegiht: float = 3.0
     axis_side_length_inches: float = 5.0
     far_right_apex_x_coordinate: float = 2.5

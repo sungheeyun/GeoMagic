@@ -7,7 +7,7 @@ from matplotlib.axes import Axes
 from mpl_toolkits.mplot3d import Axes3D
 
 from drawing.utils import get_figure
-from atoms.polygon_2d import Polygon
+from atoms.polygon import Polygon
 from atoms.regular_polygon import RegularPolygon
 from complex_objs.seg_collection_ndim import SegCollectionNDim
 from complex_objs.polygonal_prism_3d import PolygonalPrism3D
@@ -15,7 +15,6 @@ from complex_objs.polygonal_pyramid_3d import PolygonalPyramid3D
 from transformation.scaling import Scaling
 from transformation.shifting import Shifting
 from transformation.rotation_around_subspace_axis import RotationAroundSubspaceAxis
-
 
 Axes3D
 
@@ -35,13 +34,12 @@ class Test3DObjectTransformation(unittest.TestCase):
 
         cls.regular_tetrahedron: PolygonalPyramid3D = PolygonalPyramid3D(regular_triangle, north_point)
 
-    @classmethod
-    def tearDownClass(cls) -> None:
-        plt.show()
-
     def _test_polygonal_prism_3d(self) -> None:
+        """
+        TODO unmute this!
+        """
         polygon: Polygon = RegularPolygon(5)
-        # polygon = Polygon([[0, 0], [1, 1], [5, 8], [-2, 10], [-3, 1]])
+        # base_polygon = Polygon([[0, 0], [1, 1], [5, 8], [-2, 10], [-3, 1]])
         polygonal_prism_3d = PolygonalPrism3D(polygon, 2.0)
 
         fig: Figure = get_figure(1, 1, projection="3d")
@@ -57,7 +55,7 @@ class Test3DObjectTransformation(unittest.TestCase):
 
     def test_beths_curriculum(self) -> None:
         polygon: Polygon = RegularPolygon(4)
-        # polygon = Polygon([[0, 0], [1, 1], [-2, 10], [-3, 1]])
+        # base_polygon = Polygon([[0, 0], [1, 1], [-2, 10], [-3, 1]])
         polygonal_pyramid_3d = PolygonalPyramid3D(polygon, [0, 1, sqrt(2)])
 
         fig: Figure = plt.figure(figsize=(6, 10))
@@ -78,7 +76,7 @@ class Test3DObjectTransformation(unittest.TestCase):
 
     def test_polygonal_pyramid_3d(self) -> None:
         polygon: Polygon = RegularPolygon(6)
-        # polygon = Polygon([[0, 0], [1, 1], [-2, 10], [-3, 1]])
+        # base_polygon = Polygon([[0, 0], [1, 1], [-2, 10], [-3, 1]])
         polygonal_pyramid_3d = PolygonalPyramid3D(polygon, [0, 1, 2.5])
 
         fig: Figure = plt.figure(figsize=(6, 10))
@@ -98,6 +96,9 @@ class Test3DObjectTransformation(unittest.TestCase):
         self.assertTrue(True)
 
     def _test_basic_transformations(self) -> None:
+        """
+        TODO unmute this!
+        """
         regular_tetrahedron: PolygonalPyramid3D = Test3DObjectTransformation.regular_tetrahedron
 
         scaling: Scaling = Scaling(Test3DObjectTransformation.SCALE_FACTOR)
@@ -133,3 +134,6 @@ class Test3DObjectTransformation(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+

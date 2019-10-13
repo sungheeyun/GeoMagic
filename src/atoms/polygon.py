@@ -1,4 +1,4 @@
-from typing import Iterable, List, Tuple, Union
+from typing import Iterable, List, Tuple, Union, Any
 
 import matplotlib.patches as mp
 import numpy as np
@@ -11,7 +11,7 @@ from atoms.vector2d import Vector2D
 
 class Polygon(GeoObject2D):
     """
-    Implements a polygon.
+    Implements a base_polygon.
     """
 
     def __init__(self, vertex_coor_iter: Iterable[Iterable[float]]):
@@ -44,14 +44,12 @@ class Polygon(GeoObject2D):
 
         return Polygon(vstack(coordinate_list))
 
-    def draw(self, ax: Axes, **kwargs) -> mp.Polygon:
+    def draw(self, ax: Axes, **kwargs) -> None:
         dkwargs = dict(fill=False)
         dkwargs.update(kwargs)
 
         polygon_patch = mp.Polygon(self.vertex_coor_array, **dkwargs)
         ax.add_patch(polygon_patch)
-
-        return polygon_patch
 
     @classmethod
     def get_polygon_from_edges_and_angles(
@@ -59,7 +57,7 @@ class Polygon(GeoObject2D):
         start_point: Union[Vector2D, Tuple[Union[float, int], Union[float, int]]],
         edge_length_iter: Iterable[float],
         angle_iter: Iterable[float],
-    ) -> GeoObject2D:
+    ) -> Any:
         start_point: Vector2D = Vector2D(start_point)
 
         vector_list: List[Vector2D] = list()
@@ -85,7 +83,7 @@ class Polygon(GeoObject2D):
         start_point_2: Union[Vector2D, Tuple[Union[float, int], Union[float, int]]],
         edge_length_iter: Iterable[Union[float, int]],
         angle_iter: Iterable[Union[float, int]],
-    ) -> GeoObject2D:
+    ) -> Any:
         delta_vector: Vector2D = Vector2D(start_point_2) - start_point_1
 
         starting_vector_length = delta_vector.norm()

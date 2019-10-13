@@ -4,7 +4,7 @@ from copy import deepcopy
 from numpy import array, ndarray, eye
 
 from utils import get_angle
-from atoms.polygon_2d import Polygon
+from atoms.polygon import Polygon
 from atoms.directed_line_segment_ndim import DirectedLineSegmentNDim
 from atoms.box_ndim import BoxNDim
 from complex_objs.polygon_2d_ndim import Polygon2DInNDim

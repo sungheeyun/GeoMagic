@@ -1,3 +1,4 @@
+from typing import Any
 from abc import abstractmethod
 
 from matplotlib.axes import Axes
@@ -8,7 +9,7 @@ from transformation.transformation_base import TransformationBase
 
 class GeoObjectNDim(GeoObject):
     @abstractmethod
-    def apply_transformation(self, transformer: TransformationBase) -> GeoObject:
+    def apply_transformation(self, transformer: TransformationBase) -> Any:
         pass
 
     @abstractmethod

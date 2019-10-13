@@ -4,10 +4,10 @@ from matplotlib import pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.axes import Axes
 
-from atoms.arrow import Arrow
-from atoms.box import Box
-from atoms.geo_object_2d import GeoObject2D
-from atoms.segment_2d import Segment2D
+from atoms.old_arrow import OldArrow
+from atoms.old_box import OldBox
+from atoms.old_geo_object_2d import OldGeoObject2D
+from atoms.old_segment import OldSegment
 
 if __name__ == "__main__":
 
@@ -30,13 +30,13 @@ if __name__ == "__main__":
 
     for idx, component_name in enumerate(component_name_list):
         left_x = gap_between_components * float(idx)
-        box = Box((left_x, 0.0), (component_box_width, component_box_height), text=component_name)
+        box = OldBox((left_x, 0.0), (component_box_width, component_box_height), text=component_name)
         component_box_list.append(box)
 
         line_x = component_box_list[-1].get_mid_x_coor()
-        Segment2D((line_x, component_box_height), (line_x, line_height))
+        OldSegment((line_x, component_box_height), (line_x, line_height))
 
-    print(GeoObject2D.component_list)
+    print(OldGeoObject2D.component_list)
 
     data_flow_list = list()
     data_flow_list.append((0, 1, "State"))
@@ -68,22 +68,22 @@ if __name__ == "__main__":
         arrow_length = to_comp_box_mid_x_coor - from_comp_box_mid_x_coor - float_is_from_less_than_to * small_box_width
         mid_x_coor = (to_comp_box_mid_x_coor + from_comp_box_mid_x_coor) / 2.0
 
-        from_box = Box(
+        from_box = OldBox(
             (from_comp_box_mid_x_coor - small_box_width / 2.0, line_y_coor - small_box_height),
             (small_box_width, small_box_height),
         )
 
         if draw_to_box:
-            to_box = Box(
+            to_box = OldBox(
                 (to_comp_box_mid_x_coor - small_box_width / 2.0, line_y_coor), (small_box_width, small_box_height)
             )
 
-        Arrow(
+        OldArrow(
             (from_comp_box_mid_x_coor + float_is_from_less_than_to * small_box_width / 2.0, line_y_coor),
             (arrow_length, 0.0),
         )
 
-        Box(
+        OldBox(
             (mid_x_coor - info_box_width / 2.0, line_y_coor - info_box_height / 2.0),
             (info_box_width, info_box_height),
             text=info_text,
@@ -94,7 +94,8 @@ if __name__ == "__main__":
 
     fig: Figure = plt.figure(figsize=(10, 10))
     axis: Axes = fig.add_subplot(111)
-    GeoObject2D.draw_all_components(axis)
+    OldGeoObject2D.draw_all_components(axis)
+    axis.axis('off')
     fig.savefig(os.path.join(os.curdir, "figures", "test_bot_mlp_workflow.png"))
 
     if "__file__" in dir():

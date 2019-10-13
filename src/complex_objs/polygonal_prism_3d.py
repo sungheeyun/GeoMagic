@@ -1,7 +1,7 @@
 from typing import Union
 from copy import deepcopy
 
-from atoms.polygon_2d import Polygon
+from atoms.polygon import Polygon
 from complex_objs.polygon_2d_ndim import Polygon2DInNDim
 from complex_objs.seg_collection_ndim import SegCollectionNDim
 

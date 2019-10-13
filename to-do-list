@@ -1,3 +1,6 @@
+TODO move all plt.show() in tearDown static methods to below if __name__ == "__main__"
+TODO change return type of draw to None
+
 . take care of the parts marked by XXX
 . check coordinate direction for 3d rotation. something seems odd
 . test rotation on 2d object, too.

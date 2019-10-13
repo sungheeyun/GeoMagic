@@ -1,14 +1,14 @@
 import numpy as np
 
-from atoms.geo_object_2d import GeoObject2D
+from atoms.old_geo_object_2d import OldGeoObject2D
 
 
-class Box(GeoObject2D):
+class OldBox(OldGeoObject2D):
 
     BOX_DEFAULT_PLOTTING_KARGS = dict(facecolor="w", edgecolor="k", linewidth=0.5, zorder=5)
 
     def __init__(self, lt_coor, wh_pair, text=None, **kwargs):
-        super(Box, self).__init__(Box.BOX_DEFAULT_PLOTTING_KARGS, kwargs)
+        super(OldBox, self).__init__(OldBox.BOX_DEFAULT_PLOTTING_KARGS, kwargs)
         self.lt_coor = lt_coor
         self.wh_pair = wh_pair
         self.text = text

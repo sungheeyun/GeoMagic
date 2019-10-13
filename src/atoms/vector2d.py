@@ -1,4 +1,4 @@
-from typing import Iterable, Tuple, Union
+from typing import Iterable, Tuple, Union, Any
 
 from matplotlib.patches import Patch
 from numpy import arctan2, array, cos, ndarray, pi, sin, vstack
@@ -12,7 +12,7 @@ class Vector2D(GeoObject2D):
     Implements a vector in n-dimensional space.
     """
 
-    def __init__(self, coordinate_or_point: Union[Iterable[float], object]):
+    def __init__(self, coordinate_or_point: Union[Iterable[float], Any]):
         if isinstance(coordinate_or_point, Vector2D):
             coordinate = coordinate_or_point.coordinate
         else:
