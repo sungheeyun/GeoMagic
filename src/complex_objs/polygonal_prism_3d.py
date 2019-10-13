@@ -3,10 +3,10 @@ from copy import deepcopy
 
 from atoms.polygon import Polygon
 from complex_objs.polygon_2d_ndim import Polygon2DInNDim
-from complex_objs.seg_collection_ndim import SegCollectionNDim
+from complex_objs.line_segment_ndim_collection import LineSegmentNDimCollection
 
 
-class PolygonalPrism3D(SegCollectionNDim):
+class PolygonalPrism3D(LineSegmentNDimCollection):
     """
     Implements a 3-D polygonal pyramid.
     """

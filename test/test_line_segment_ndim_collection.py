@@ -8,7 +8,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from drawing.utils import get_figure
 from atoms.polygon import Polygon
 from atoms.regular_polygon import RegularPolygon
-from complex_objs.seg_collection_ndim import SegCollectionNDim
+from complex_objs.line_segment_ndim_collection import LineSegmentNDimCollection
 from complex_objs.polygon_2d_ndim import Polygon2DInNDim
 from complex_objs.polygonal_prism_3d import PolygonalPrism3D
 from complex_objs.polygonal_pyramid_3d import PolygonalPyramid3D
@@ -63,7 +63,7 @@ class TestSegmentCollection(unittest.TestCase):
 
         north_point = [0, 0, sqrt(2.0)]
 
-        seg_collection_ndim = SegCollectionNDim(3, coor_3d_array)
+        seg_collection_ndim = LineSegmentNDimCollection(3, coor_3d_array)
         for idx in range(len(coor_3d_array) - 1):
             vertex = coor_3d_array[idx]
             print(vertex.shape)

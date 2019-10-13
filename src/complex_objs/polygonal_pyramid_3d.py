@@ -8,7 +8,7 @@ from atoms.polygon import Polygon
 from atoms.directed_line_segment_ndim import DirectedLineSegmentNDim
 from atoms.box_ndim import BoxNDim
 from complex_objs.polygon_2d_ndim import Polygon2DInNDim
-from complex_objs.seg_collection_ndim import SegCollectionNDim
+from complex_objs.line_segment_ndim_collection import LineSegmentNDimCollection
 from complex_objs.polygon_ndim import PolygonNDim
 from transformation.rotation_around_3d_segment import RotationAround3dSegment
 from transformation.symmetry_around_line import SymmetryAroundLine
@@ -18,7 +18,7 @@ from transformation.shifting import Shifting
 from transformation.linear_transformation import LinearTransformation
 
 
-class PolygonalPyramid3D(SegCollectionNDim):
+class PolygonalPyramid3D(LineSegmentNDimCollection):
     """
     Implements a 3-D polygonal pyramid.
     """
@@ -49,8 +49,8 @@ class PolygonalPyramid3D(SegCollectionNDim):
 
         return side_face_list
 
-    def to_2d_net(self) -> SegCollectionNDim:
-        seg_collection_ndim_list: List[SegCollectionNDim] = list()
+    def to_2d_net(self) -> LineSegmentNDimCollection:
+        seg_collection_ndim_list: List[LineSegmentNDimCollection] = list()
         center_of_gravity: ndarray = self.bottom_polygon.get_center_of_gravity_point()
 
         seg_collection_ndim_list.append(deepcopy(self.bottom_polygon))
@@ -76,14 +76,14 @@ class PolygonalPyramid3D(SegCollectionNDim):
                 projection_for_angle_calc(self.top_vertex), projection_for_angle_calc(outer_point)
             )
 
-            side_face: SegCollectionNDim = SegCollectionNDim(3, (bottom_point1, self.top_vertex, bottom_point2))
+            side_face: LineSegmentNDimCollection = LineSegmentNDimCollection(3, (bottom_point1, self.top_vertex, bottom_point2))
             rotation_around_bottom_segment: RotationAround3dSegment = RotationAround3dSegment(
                 rotation_angle, directed_bottom_line
             )
 
             seg_collection_ndim_list.append(side_face.apply_transformation(rotation_around_bottom_segment))
 
-        resulting_net: SegCollectionNDim = sum(seg_collection_ndim_list, SegCollectionNDim(self.get_num_dimensions()))
+        resulting_net: LineSegmentNDimCollection = sum(seg_collection_ndim_list, LineSegmentNDimCollection(self.get_num_dimensions()))
 
         smallest_containing_box: BoxNDim = resulting_net.get_smallest_containing_box()
 

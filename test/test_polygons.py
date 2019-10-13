@@ -107,8 +107,6 @@ class TestPolygons(unittest.TestCase):
 
         fig.show()
 
-        fig.savefig("yyy.png")
-
         self.assertTrue(True)
 
     def test_pentagon_start(self):

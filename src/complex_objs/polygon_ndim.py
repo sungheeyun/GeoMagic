@@ -1,10 +1,10 @@
 from typing import Iterable, Union
 from numpy import ndarray, array, vstack
 
-from complex_objs.seg_collection_ndim import SegCollectionNDim
+from complex_objs.line_segment_ndim_collection import LineSegmentNDimCollection
 
 
-class PolygonNDim(SegCollectionNDim):
+class PolygonNDim(LineSegmentNDimCollection):
     """
     Implements connected N-dimensional segments.
     """

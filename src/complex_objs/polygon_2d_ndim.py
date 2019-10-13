@@ -9,6 +9,7 @@ from complex_objs.polygon_ndim import PolygonNDim
 class Polygon2DInNDim(PolygonNDim):
     """
     Implements a base_polygon in 2-D plane in N-dimensional space.
+    TODO - (2) Come up with a better name for this class
     """
 
     def __init__(self, polygon: Polygon, rest_coordinate: List[Union[float, int]]):

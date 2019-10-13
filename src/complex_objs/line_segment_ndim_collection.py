@@ -9,7 +9,7 @@ from atoms.box_ndim import BoxNDim
 from transformation.transformation_base import TransformationBase
 
 
-class SegCollectionNDim(GeoObjectNDim):
+class LineSegmentNDimCollection(GeoObjectNDim):
     """
     Implements n-dimensional object consisting of segments.
     """
@@ -51,7 +51,7 @@ class SegCollectionNDim(GeoObjectNDim):
             segment.draw3d(axis, **kwargs)
 
     def apply_transformation(self, transformer: TransformationBase) -> GeoObjectNDim:
-        seg_collection_ndim: SegCollectionNDim = SegCollectionNDim(self.get_num_dimensions())
+        seg_collection_ndim: LineSegmentNDimCollection = LineSegmentNDimCollection(self.get_num_dimensions())
 
         for segment_ndim in self.segment_ndim_list:
             seg_collection_ndim.segment_ndim_list.append(segment_ndim.apply_transformation(transformer))
@@ -60,14 +60,14 @@ class SegCollectionNDim(GeoObjectNDim):
 
     def __add__(self, other: GeoObjectNDim) -> GeoObjectNDim:
         """
-        Combine two SegCollectionNDim's into one SegCollectionNDim.
+        Combine two LineSegmentNDimCollection's into one LineSegmentNDimCollection.
         """
         if not (self.get_num_dimensions() == other.get_num_dimensions()):
             except_msg_1: str = "The dimensions of the two objects should be the same to be summed;"
             except_msg_2: str = f"they are {self.get_num_dimensions()} and {other.get_num_dimensions()}."
             raise Exception(f"{except_msg_1} {except_msg_2}")
 
-        seg_collection_ndim_summed: SegCollectionNDim = deepcopy(self)
+        seg_collection_ndim_summed: LineSegmentNDimCollection = deepcopy(self)
 
         for segment_ndim in other.segment_ndim_list:
             seg_collection_ndim_summed.segment_ndim_list.append(deepcopy(segment_ndim))

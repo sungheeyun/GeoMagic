@@ -1,0 +1,2 @@
+class GeoMagicException(Exception):
+    pass

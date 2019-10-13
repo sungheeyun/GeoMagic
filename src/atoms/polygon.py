@@ -7,15 +7,19 @@ from numpy import arctan2, cos, ndarray, pi, sin, vstack
 
 from atoms.geo_object_2d import GeoObject2D
 from atoms.vector2d import Vector2D
+from exceptions.geo_magic_exception import GeoMagicException
 
 
 class Polygon(GeoObject2D):
     """
-    Implements a base_polygon.
+    Implements a polygon.
     """
 
-    def __init__(self, vertex_coor_iter: Iterable[Iterable[float]]):
-        self.vertex_coor_array: ndarray = np.array(vertex_coor_iter)
+    def __init__(self, vertex_coor_iter: Iterable[Iterable[Union[float, int]]]):
+        self.vertex_coor_array: ndarray = np.array(vertex_coor_iter, float)
+
+        if self.vertex_coor_array.shape[1] != 2:
+            raise GeoMagicException("Vertices should be in 2D space")
 
     def get_number_vertices(self) -> int:
         return self.vertex_coor_array.shape[0]

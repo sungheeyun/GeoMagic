@@ -9,7 +9,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from drawing.utils import get_figure
 from atoms.polygon import Polygon
 from atoms.regular_polygon import RegularPolygon
-from complex_objs.seg_collection_ndim import SegCollectionNDim
+from complex_objs.line_segment_ndim_collection import LineSegmentNDimCollection
 from complex_objs.polygonal_prism_3d import PolygonalPrism3D
 from complex_objs.polygonal_pyramid_3d import PolygonalPyramid3D
 from transformation.scaling import Scaling
@@ -107,9 +107,9 @@ class Test3DObjectTransformation(unittest.TestCase):
             Test3DObjectTransformation.ROTATION_ANGLE, ((0, 0, 1),)
         )
 
-        scaled_regular_tetrahedron: SegCollectionNDim = regular_tetrahedron.apply_transformation(scaling)
-        shifted_regular_tetrahedron: SegCollectionNDim = regular_tetrahedron.apply_transformation(shift)
-        rotated_regular_tetrahedron: SegCollectionNDim = regular_tetrahedron.apply_transformation(rotation)
+        scaled_regular_tetrahedron: LineSegmentNDimCollection = regular_tetrahedron.apply_transformation(scaling)
+        shifted_regular_tetrahedron: LineSegmentNDimCollection = regular_tetrahedron.apply_transformation(shift)
+        rotated_regular_tetrahedron: LineSegmentNDimCollection = regular_tetrahedron.apply_transformation(rotation)
 
         fig: Figure = get_figure(1, 1, projection="3d")
         axis1 = fig.get_axes()[0]
@@ -120,7 +120,7 @@ class Test3DObjectTransformation(unittest.TestCase):
         shifted_regular_tetrahedron.draw3d(axis1)
 
         for idx in range(10):
-            rotated_regular_tetrahedron: SegCollectionNDim = rotated_regular_tetrahedron.apply_transformation(rotation)
+            rotated_regular_tetrahedron: LineSegmentNDimCollection = rotated_regular_tetrahedron.apply_transformation(rotation)
             rotated_regular_tetrahedron.draw3d(axis1)
 
         rotated_regular_tetrahedron.draw3d(axis1)
@@ -134,6 +134,3 @@ class Test3DObjectTransformation(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-
-

@@ -1,5 +1,7 @@
-TODO move all plt.show() in tearDown static methods to below if __name__ == "__main__"
-TODO change return type of draw to None
+TODO - move all plt.show() in tearDown static methods to below if __name__ == "__main__"
+TODO - change return type of draw to None
+TODO - think of whether or not we should put '2d' to some class names (hence file names). Regardless of the results,
+TODO   make the naming consistent.
 
 . take care of the parts marked by XXX
 . check coordinate direction for 3d rotation. something seems odd
