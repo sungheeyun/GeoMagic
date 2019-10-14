@@ -15,7 +15,7 @@ class GeoObjectNDim(GeoObject):
 
     @abstractmethod
     def draw2d(self, axis: Axes, **kwargs):
-        # TODO reconsider the name.. it's actually drawing the projection onto x-y plane, a very specific 2D plane
+        # TODO (4) reconsider the name.. it's actually drawing the projection onto x-y plane, a very specific 2D plane
         pass
 
     @abstractmethod
@@ -27,7 +27,7 @@ class GeoObjectNDim(GeoObject):
         """
         Returns a projection of this GeoObjectNDim onto 2D plane by choosing two coordinate values.
         Note that this is NOT a generic projection onto 2D plane, rather to one of those n(n+2)/2 vertical planes.
-        TODO Thus I need to find a better name for this method!
+        TODO (4) Thus I need to find a better name for this method!
 
         Parameters
         ----------

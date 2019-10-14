@@ -67,7 +67,7 @@ class BoxNDim(GeoObjectNDim):
         return self
 
     def get_projection_onto_2d_plane(self, first_coordinate_index: int, second_coordinate_index: int) -> GeoObject2D:
-        # TODO implement this so that it returns Box2D instance after defining Box2D
+        # TODO (1) implement this
         assert False
 
     def get_edge_length_array(self) -> ndarray:

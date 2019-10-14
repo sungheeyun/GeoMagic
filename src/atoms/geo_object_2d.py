@@ -7,7 +7,7 @@ from atoms.geo_object_base import GeoObject
 
 class GeoObject2D(GeoObject):
     """
-    TODO Think again whether GeoObject2D really has to defined all the abstract methods below.
+    TODO (4) Think again whether GeoObject2D really has to define all the abstract methods below.
     """
 
     def get_num_dimensions(self):
@@ -24,7 +24,7 @@ class GeoObject2D(GeoObject):
             second_point: Union[object, Tuple[Union[float, int], Union[float, int]]],
     ) -> Any:
         """
-        TODO remove deepcopy for all abstract methods of this class and tests whether it doesn't break anything
+        TODO (5) remove deepcopy for all abstract methods of this class and tests whether it doesn't break anything
         """
         pass
         return deepcopy(self)
@@ -32,7 +32,7 @@ class GeoObject2D(GeoObject):
     @abstractmethod
     def translate(self, delta: Union[object, Tuple[Union[float, int], Union[float, int]]]) -> Any:
         """
-        TODO change the signature of this function and make proper changes at all subclasses
+        TODO (4) change the signature of this function and make proper changes at all subclasses
         """
         pass
         return deepcopy(self)
