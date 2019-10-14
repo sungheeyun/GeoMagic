@@ -62,7 +62,7 @@ class LineSegmentNDimCollection(GeoObjectNDim):
         for segment in self.line_segment_ndim_list:
             segment.draw3d(axis, **kwargs)
 
-    def apply_transformation(self, transformer: TransformationBase) -> GeoObjectNDim:
+    def apply_transformation(self, transformer: TransformationBase) -> Any:
         seg_collection_ndim: LineSegmentNDimCollection = LineSegmentNDimCollection(
             self.get_num_dimensions()
         )

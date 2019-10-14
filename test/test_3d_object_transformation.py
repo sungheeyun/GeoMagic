@@ -1,6 +1,6 @@
 import unittest
 
-from numpy import sqrt
+from numpy import sqrt, ones, ndarray
 from matplotlib import pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.axes import Axes
@@ -36,10 +36,7 @@ class Test3DObjectTransformation(unittest.TestCase):
             regular_triangle, north_point
         )
 
-    def _test_polygonal_prism_3d(self) -> None:
-        """
-        TODO (5) unmute this!
-        """
+    def test_polygonal_prism_3d(self) -> None:
         polygon: Polygon = RegularPolygon(5)
         # base_polygon = Polygon([[0, 0], [1, 1], [5, 8], [-2, 10], [-3, 1]])
         polygonal_prism_3d = PolygonalPrism3D(polygon, 2.0)
@@ -97,14 +94,13 @@ class Test3DObjectTransformation(unittest.TestCase):
 
         self.assertTrue(True)
 
-    def _test_basic_transformations(self) -> None:
-        """
-        TODO (5) unmute this!
-        """
+    def test_basic_transformations(self) -> None:
         regular_tetrahedron: PolygonalPyramid3D = Test3DObjectTransformation.regular_tetrahedron
 
+        shift_vector: ndarray = Test3DObjectTransformation.SHIFT_DELTA * ones(regular_tetrahedron.get_num_dimensions())
+
         scaling: Scaling = Scaling(Test3DObjectTransformation.SCALE_FACTOR)
-        shift: Shifting = Shifting(Test3DObjectTransformation.SHIFT_DELTA)
+        shift: Shifting = Shifting(shift_vector)
         rotation: RotationAroundSubspaceAxis = RotationAroundSubspaceAxis(
             Test3DObjectTransformation.ROTATION_ANGLE, ((0, 0, 1),)
         )
