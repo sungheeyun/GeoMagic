@@ -64,7 +64,7 @@ class Test3DObjectTransformation(unittest.TestCase):
 
         # polygonal_pyramid_3d.draw3d(axis1)
         polygonal_pyramid_3d.draw3d(axis1)
-        polygonal_pyramid_3d.to_2d_net().draw2d(axis2, color="k")
+        polygonal_pyramid_3d.to_2d_net().draw(axis2, color="k")
 
         # axis1.axis("off")
         axis2.axis("off")
@@ -85,7 +85,7 @@ class Test3DObjectTransformation(unittest.TestCase):
 
         # polygonal_pyramid_3d.draw3d(axis1)
         polygonal_pyramid_3d.draw3d(axis1)
-        polygonal_pyramid_3d.to_2d_net().draw2d(axis2, color="k")
+        polygonal_pyramid_3d.to_2d_net().draw(axis2, color="k")
 
         # axis1.axis("off")
         axis2.axis("off")
