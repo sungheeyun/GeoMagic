@@ -3,7 +3,6 @@ from typing import List, Union
 from matplotlib.axes import Axes
 from numpy import ndarray, array
 
-from atoms.geo_object_2d import GeoObject2D
 from atoms.geo_object_base import GeoObject
 from atoms.geo_object_ndim import GeoObjectNDim
 from atoms.vector2d import Vector2D

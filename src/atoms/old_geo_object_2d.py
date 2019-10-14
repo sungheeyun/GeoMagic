@@ -4,6 +4,7 @@ from matplotlib.axes import Axes
 from matplotlib.patches import Patch
 
 from atoms.geo_object_base import GeoObject
+from atoms.box_ndim import BoxNDim
 
 
 class OldGeoObject2D(GeoObject):
@@ -39,3 +40,8 @@ class OldGeoObject2D(GeoObject):
         # axis.axis('off')
 
         # figure.show()
+
+    def get_smallest_containing_box(self) -> BoxNDim:
+        # TODO (1) implement this in the subclasses ONLY IF needed since they're old (deprecated) classes anyway.
+        assert False
+        pass

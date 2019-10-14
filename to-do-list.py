@@ -1,4 +1,5 @@
 # TODO - (5) Take a look at below todo list written a long ago.
+# TODO - (5) remove idx: int in front of for-loop since it's not needed
 # TODO - move all plt.show() in tearDown static methods to below if __name__ == "__main__"
 # TODO - change return type of draw to None
 # TODO - think of whether or not we should put '2d' to some class names (hence file names). Regardless of the results,

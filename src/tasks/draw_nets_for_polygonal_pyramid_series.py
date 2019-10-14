@@ -1,5 +1,6 @@
-from typing import List, Tuple
+from typing import List
 import logging
+import os
 
 import numpy as np
 from matplotlib import pyplot as plt
@@ -12,7 +13,7 @@ from atoms.box_ndim import BoxNDim
 from complex_objs.polygonal_pyramid_3d import PolygonalPyramid3D
 from complex_objs.geo_object_collection_2d import GeoObjectCollection2D
 from drawing.utils import get_figure
-from utils import set_logger_config
+from utils import set_logger_config, FIGURES_DIR
 
 Axes3D
 logger = logging.getLogger("geomagic")
@@ -80,18 +81,20 @@ if __name__ == "__main__":
     axis_height: float
     axis_width, axis_height = smallest_containing_box.get_edge_length_array()
 
-    for polygonal_pyramid_net in polygonal_pyramid_net_list:
-
+    for idx, polygonal_pyramid_net in enumerate(polygonal_pyramid_net_list):
         figure: Figure = get_figure(
-            1, 1, 1, 1, 1, 1, axis_width, axis_height
+            1, 1, 0.5, 0.5, 0.5, 0.5, axis_width, axis_height
         )
         axis: Axes = figure.get_axes()[0]
 
         polygonal_pyramid_net.draw(axis)
 
-        axis.grid(True)
+        # axis.grid(True)
         axis.set_xlim(x_lim)
         axis.set_ylim(y_lim)
+
+        figure_save_file_full_path = os.path.join(FIGURES_DIR, f"polygonal_pyramid_net_{idx}.pdf")
+        figure.savefig(figure_save_file_full_path)
 
         figure.show()
 

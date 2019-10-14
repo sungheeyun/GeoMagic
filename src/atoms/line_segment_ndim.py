@@ -1,7 +1,6 @@
 from typing import Iterable, Union, List
 from logging import getLogger, Logger
 
-from atoms.geo_object_2d import GeoObject2D
 from atoms.line_segment_2d import LineSegment2D
 from atoms.geo_object_base import GeoObject
 from numpy import array, vstack, ndarray

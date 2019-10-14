@@ -18,9 +18,10 @@ if __name__ == "__main__":
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
 
-    # ax.axis('off')
-
     obj3d.draw3d(ax)
 
     fig.show()
     plt.show()
+
+    if "__file__" in dir():
+        plt.show()

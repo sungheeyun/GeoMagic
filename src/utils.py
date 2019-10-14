@@ -48,6 +48,8 @@ def make_log_dir(log_dir: Optional[str] = None) -> str:
     else:
         os.mkdir(log_dir)
 
+    return log_dir
+
 
 def set_logging_basic_config(
         main_python_file_name: str,
@@ -59,13 +61,14 @@ def set_logging_basic_config(
     Sets basic logging configuration.
     """
     main_python_file_name_root = get_file_name_root(main_python_file_name)
-    make_log_dir(log_dir)
+    log_dir: str = make_log_dir(log_dir)
+    log_file_full_path = os.path.join(log_dir, f"{main_python_file_name_root}_{get_now_str()}.log")
 
     logging.basicConfig(
         level=level,
         format=format,
         handlers=[
-            logging.FileHandler(os.path.join(log_dir, f"{main_python_file_name_root}_{get_now_str()}.log")),
+            logging.FileHandler(log_file_full_path),
             logging.StreamHandler(),
         ],
     )
@@ -82,11 +85,12 @@ def set_logger_config(
     Sets basic logging configuration.
     """
     main_python_file_name_root = get_file_name_root(main_python_file_name)
-    make_log_dir(log_dir)
+    log_dir: str = make_log_dir(log_dir)
+    log_file_full_path = os.path.join(log_dir, f"{main_python_file_name_root}_{get_now_str()}.log")
 
     logger.setLevel(level)
 
-    file_handler: logging.FileHandler = logging.FileHandler('spam.log')
+    file_handler: logging.FileHandler = logging.FileHandler(log_file_full_path)
     stream_handler: logging.StreamHandler = logging.StreamHandler()
 
     formatter: logging.Formatter = logging.Formatter(format)

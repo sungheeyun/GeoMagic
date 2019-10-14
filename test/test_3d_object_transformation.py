@@ -32,7 +32,9 @@ class Test3DObjectTransformation(unittest.TestCase):
 
         north_point = [0, 0, sqrt(2.0)]
 
-        cls.regular_tetrahedron: PolygonalPyramid3D = PolygonalPyramid3D(regular_triangle, north_point)
+        cls.regular_tetrahedron: PolygonalPyramid3D = PolygonalPyramid3D(
+            regular_triangle, north_point
+        )
 
     def _test_polygonal_prism_3d(self) -> None:
         """
@@ -107,9 +109,15 @@ class Test3DObjectTransformation(unittest.TestCase):
             Test3DObjectTransformation.ROTATION_ANGLE, ((0, 0, 1),)
         )
 
-        scaled_regular_tetrahedron: LineSegmentNDimCollection = regular_tetrahedron.apply_transformation(scaling)
-        shifted_regular_tetrahedron: LineSegmentNDimCollection = regular_tetrahedron.apply_transformation(shift)
-        rotated_regular_tetrahedron: LineSegmentNDimCollection = regular_tetrahedron.apply_transformation(rotation)
+        scaled_regular_tetrahedron: LineSegmentNDimCollection = regular_tetrahedron.apply_transformation(
+            scaling
+        )
+        shifted_regular_tetrahedron: LineSegmentNDimCollection = regular_tetrahedron.apply_transformation(
+            shift
+        )
+        rotated_regular_tetrahedron: LineSegmentNDimCollection = regular_tetrahedron.apply_transformation(
+            rotation
+        )
 
         fig: Figure = get_figure(1, 1, projection="3d")
         axis1 = fig.get_axes()[0]
@@ -120,7 +128,9 @@ class Test3DObjectTransformation(unittest.TestCase):
         shifted_regular_tetrahedron.draw3d(axis1)
 
         for idx in range(10):
-            rotated_regular_tetrahedron: LineSegmentNDimCollection = rotated_regular_tetrahedron.apply_transformation(rotation)
+            rotated_regular_tetrahedron: LineSegmentNDimCollection = rotated_regular_tetrahedron.apply_transformation(
+                rotation
+            )
             rotated_regular_tetrahedron.draw3d(axis1)
 
         rotated_regular_tetrahedron.draw3d(axis1)

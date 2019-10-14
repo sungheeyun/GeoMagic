@@ -1,5 +1,6 @@
 import os
 
+from matplotlib import pyplot as plt
 from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 
@@ -42,3 +43,6 @@ if __name__ == "__main__":
     figure.show()
 
     figure.savefig(os.path.join(FIGURES_DIR, "regular_polygon"))
+
+    if "__file__" in dir():
+        plt.show()
