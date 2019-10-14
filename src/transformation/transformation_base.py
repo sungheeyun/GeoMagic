@@ -4,7 +4,7 @@ from numpy import ndarray, array
 
 
 class TransformationBase(ABC):
-    def __call__(self, x_iter: Iterable) -> Iterable:
+    def __call__(self, x_iter: Iterable) -> ndarray:
         x_array: ndarray = array(x_iter, float)
 
         if x_array.ndim == 1:

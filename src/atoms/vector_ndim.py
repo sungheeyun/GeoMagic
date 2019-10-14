@@ -1,8 +1,12 @@
 from typing import List, Union
 
+from matplotlib.axes import Axes
 from numpy import ndarray, array
 
+from atoms.geo_object_2d import GeoObject2D
+from atoms.geo_object_base import GeoObject
 from atoms.geo_object_ndim import GeoObjectNDim
+from atoms.vector2d import Vector2D
 from transformation.transformation_base import TransformationBase
 
 
@@ -29,3 +33,18 @@ class VectorNDim(GeoObjectNDim):
 
     def apply_transformation(self, transformer: TransformationBase) -> GeoObjectNDim:
         return VectorNDim(transformer(self.array_1d))
+
+    def draw2d(self, axis: Axes, **kwargs):
+        # TODO (1) implement VectorNDim.draw2d
+        assert False
+
+    def draw3d(self, axis: Axes, **kwargs):
+        # TODO (1) implement VectorNDim.draw3d
+        assert False
+
+    def get_smallest_containing_box(self) -> GeoObject:
+        # TODO (1) implement VectorNDim.get_smallest_containing_box(self) -> GeoObject:
+        pass
+
+    def get_projection_onto_2d_plane(self, first_coordinate_index: int, second_coordinate_index: int) -> Vector2D:
+        return Vector2D(self.array_1d[[first_coordinate_index, second_coordinate_index]])

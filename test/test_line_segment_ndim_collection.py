@@ -69,7 +69,7 @@ class TestSegmentCollection(unittest.TestCase):
             print(vertex.shape)
             seg_collection_ndim.add_segments(vstack((vertex, north_point)))
 
-        for segment in seg_collection_ndim.segment_ndim_list:
+        for segment in seg_collection_ndim.line_segment_ndim_list:
             print(segment)
 
         fig: Figure = get_figure(1, 2, projection="3d")

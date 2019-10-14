@@ -3,16 +3,25 @@ from typing import Iterable, Union
 from matplotlib.axes import Axes
 from numpy import array, ndarray, vstack
 
+from atoms.geo_object_2d import GeoObject2D
 from atoms.geo_object_ndim import GeoObjectNDim
 from transformation.transformation_base import TransformationBase
 
 
 class BoxNDim(GeoObjectNDim):
     """
-    Implements N-dimensional box for mostly range calculation.
+    Implements N-dimensional box (e.g., for mostly range calculation).
     """
 
     def __init__(self, lower_left_iter: Iterable[Union[float, int]], upper_right_iter: Iterable[Union[float, int]]):
+        """
+        Parameters
+        ----------
+        lower_left_iter
+            The coordinate of the lower left corner of the box.
+        upper_right_iter: None
+            The coordinate of the upper right corner of the box.
+        """
         self.lower_left_point: ndarray = array(lower_left_iter, float)
         self.upper_right_point: ndarray = array(upper_right_iter, float)
 
@@ -56,3 +65,10 @@ class BoxNDim(GeoObjectNDim):
 
     def get_smallest_containing_box(self) -> GeoObjectNDim:
         return self
+
+    def get_projection_onto_2d_plane(self, first_coordinate_index: int, second_coordinate_index: int) -> GeoObject2D:
+        # TODO implement this so that it returns Box2D instance after defining Box2D
+        assert False
+
+    def get_edge_length_array(self) -> ndarray:
+        return self.upper_right_point - self.lower_left_point

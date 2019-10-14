@@ -7,6 +7,7 @@ from numpy import arctan2, cos, ndarray, pi, sin, vstack
 
 from atoms.geo_object_2d import GeoObject2D
 from atoms.vector2d import Vector2D
+from atoms.box_ndim import BoxNDim
 from exceptions.geo_magic_exception import GeoMagicException
 
 
@@ -49,11 +50,14 @@ class Polygon(GeoObject2D):
         return Polygon(vstack(coordinate_list))
 
     def draw(self, ax: Axes, **kwargs) -> None:
-        dkwargs = dict(fill=False)
-        dkwargs.update(kwargs)
+        drawing_kwargs = dict(fill=False)
+        drawing_kwargs.update(kwargs)
 
-        polygon_patch = mp.Polygon(self.vertex_coor_array, **dkwargs)
+        polygon_patch = mp.Polygon(self.vertex_coor_array, **drawing_kwargs)
         ax.add_patch(polygon_patch)
+
+    def get_smallest_containing_box(self) -> BoxNDim:
+        return BoxNDim(self.vertex_coor_array.min(axis=0), self.vertex_coor_array.max(axis=0))
 
     @classmethod
     def get_polygon_from_edges_and_angles(

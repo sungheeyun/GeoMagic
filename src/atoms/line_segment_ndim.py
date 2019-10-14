@@ -1,5 +1,8 @@
-from typing import Iterable, Union
+from typing import Iterable, Union, List
+from logging import getLogger, Logger
 
+from atoms.geo_object_2d import GeoObject2D
+from atoms.line_segment_2d import LineSegment2D
 from atoms.geo_object_base import GeoObject
 from numpy import array, vstack, ndarray
 from matplotlib.axes import Axes
@@ -7,6 +10,8 @@ from matplotlib.axes import Axes
 from atoms.geo_object_ndim import GeoObjectNDim
 from atoms.box_ndim import BoxNDim
 from transformation.transformation_base import TransformationBase
+
+logger: Logger = getLogger('geomagic')
 
 
 class LineSegmentNDim(GeoObjectNDim):
@@ -26,6 +31,16 @@ class LineSegmentNDim(GeoObjectNDim):
     def get_num_dimensions(self) -> int:
         return self.point_1.size
 
+    def get_projection_onto_2d_plane(self, first_coordinate_index: int, second_coordinate_index: int) -> LineSegment2D:
+        coor_list: List[int] = [first_coordinate_index, second_coordinate_index]
+        logger.debug(f"self.point_1 = {self.point_1}")
+        logger.debug(f"self.point_2 = {self.point_2}")
+        logger.debug(f"coor_list = {coor_list}")
+        logger.debug(f"self.point_1[coor_list] = {self.point_1[coor_list]}")
+        logger.debug(f"self.point_2[coor_list] = {self.point_2[coor_list]}")
+
+        return LineSegment2D(self.point_1[coor_list], self.point_2[coor_list])
+
     def __repr__(self) -> str:
         return f"Seg({self.point_1}, {self.point_2})"
 
@@ -36,8 +51,8 @@ class LineSegmentNDim(GeoObjectNDim):
         return axis.plot(self.point_array_2d[:, 0], self.point_array_2d[:, 1], self.point_array_2d[:, 2], **kwargs)
 
     def apply_transformation(self, transformer: TransformationBase) -> GeoObject:
-        point1: ndarray = None
-        point2: ndarray = None
+        point1: ndarray
+        point2: ndarray
         point1, point2 = transformer(self.point_array_2d)
 
         return LineSegmentNDim(point1, point2)

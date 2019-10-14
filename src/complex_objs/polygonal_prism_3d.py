@@ -24,11 +24,11 @@ class PolygonalPrism3D(LineSegmentNDimCollection):
 
     def _initialize(self):
 
-        for segment_ndim in self.bottom_polygon.segment_ndim_list:
-            self.segment_ndim_list.append(deepcopy(segment_ndim))
+        for segment_ndim in self.bottom_polygon.line_segment_ndim_list:
+            self.line_segment_ndim_list.append(deepcopy(segment_ndim))
 
-        for segment_ndim in self.top_polygon.segment_ndim_list:
-            self.segment_ndim_list.append(deepcopy(segment_ndim))
+        for segment_ndim in self.top_polygon.line_segment_ndim_list:
+            self.line_segment_ndim_list.append(deepcopy(segment_ndim))
 
         for idx, bottom_point in enumerate(self.bottom_polygon.point_array_2d):
             top_point = self.top_polygon.point_array_2d[idx]

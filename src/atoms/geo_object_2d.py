@@ -13,6 +13,10 @@ class GeoObject2D(GeoObject):
     def get_num_dimensions(self):
         return 2
 
+    def get_smallest_containing_box(self) -> Any:
+        # TODO (2) implement get_smallest_containing_box(self) for all the subclasses of GeoObject2D!
+        assert False
+
     @abstractmethod
     def get_mirror_symmetry(
             self,
