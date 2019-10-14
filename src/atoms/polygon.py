@@ -29,8 +29,8 @@ class Polygon(GeoObject2D):
         return f"{self.vertex_coor_array.size[0]}-gon"
 
     def rotate(self, angle: Union[float, int]) -> GeoObject2D:
+        # TODO (1) implement Polygon.rotate
         assert False
-        # XXX
 
     def translate(self, delta: Union[object, Tuple[Union[float, int], Union[float, int]]]) -> object:
         delta_vec: Vector2D = Vector2D(delta)

@@ -6,13 +6,13 @@
 #  Regardless of the results, make the naming consistent.
 # TODO - (1) change the part that does something like "a: A = None" to declare the variable type to "a: A"
 #  everywhere it happens
-# TODO - (3) take care of the parts marked by XXX
 # TODO - (1) test rotation on 2d object, too.
 # TODO - (??) store objects with rec. boxes
 # TODO - (1) properly implement get_name for object_2d
 # TODO - (2) get A and b for symmetric_around_line transformation and subclass it from affine transformation
 # TODO - (4) change assert to exceptions
 
+# TODO - DONE - (3) take care of the parts marked by XXX
 # TODO - DONE - check coordinate direction for 3d rotation. something seems odd
 # TODO - DONE change kargs to kwargs and pargs to args
 # TODO - DONE/CC attach plotting kargs to each object

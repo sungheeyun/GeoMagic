@@ -52,15 +52,15 @@ class BoxNDim(GeoObjectNDim):
             return self
 
     def apply_transformation(self, transformer: TransformationBase) -> GeoObjectNDim:
-        # XXX
+        # TODO (1) implement BoxNDim.apply_transformation
         assert False
 
     def draw2d(self, axis: Axes, **kwargs):
-        # XXX
+        # TODO (1) implement BoxNDim.draw2d
         assert False
 
     def draw3d(self, axis: Axes, **kwargs):
-        # XXX
+        # TODO (1) implement BoxNDim.draw3d
         assert False
 
     def get_smallest_containing_box(self) -> GeoObjectNDim:

@@ -5,9 +5,6 @@ from transformation.transformation_base import TransformationBase
 
 
 class CompositeTransformation(TransformationBase):
-    """
-    XXX
-    """
 
     def __init__(self, transformer_iter: Iterable[TransformationBase]):
         self.transformer_list: List[TransformationBase] = list(transformer_iter)
